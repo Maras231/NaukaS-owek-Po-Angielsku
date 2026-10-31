@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nauka Słówek - Angielski</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #f3f4f6;
+      color: #1f2937;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background: linear-gradient(135deg, #4f46e5, #7c3aed);
+      color: white;
+      padding: 1.5rem 1rem;
+      text-align: center;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .progress-container {
+      max-width: 600px;
+      margin: 1rem auto 0;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 9999px;
+      padding: 4px;
+      position: relative;
+    }
+
+    .progress-bar {
+      height: 12px;
+      background: #10b981;
+      border-radius: 9999px;
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    .progress-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .progress-text {
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .btn-reset {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      padding: 0.25rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn-reset:hover {
+      background: rgba(239, 68, 68, 0.8);
+      border-color: transparent;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      background: white;
+      padding: 0.75rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      flex-wrap: wrap;
+    }
+
+    .nav-btn {
+      border: none;
+      background: #f3f4f6;
+      color: #4b5563;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .nav-btn:hover {
+      background: #e5e7eb;
+      color: #111827;
+    }
+
+    .nav-btn.active {
+      background: #4f46e5;
+      color: white;
+    }
+
+    main {
+      max-width: 900px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      flex: 1;
+    }
+
+    .view-section {
+      display: none;
+    }
+
+    .view-section.active {
+      display: block;
+    }
+
+    /* CARD STYLES */
+    .card-container {
+      perspective: 1000px;
+      width: 100%;
+      max-width: 450px;
+      height: 260px;
+      margin: 0 auto 1.5rem;
+      cursor: pointer;
+    }
+
+    .card {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.4s ease-out;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      border-radius: 16px;
+    }
+
+    .card.flipped {
+      transform: rotateY(180deg);
+    }
+
+    .card-face {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 1.5rem;
+      text-align: center;
+      background: white;
+      border: 2px solid #e5e7eb;
+    }
+
+    .card-back {
+      transform: rotateY(180deg);
+      background: #f9fafb;
+    }
+
+    .word-main {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 0.5rem;
+    }
+
+    .word-sub {
+      font-size: 1.25rem;
+      color: #6b7280;
+    }
+
+    .controls-row {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      max-width: 450px;
+      margin: 0 auto;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.1s, background 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn:active {
+      transform: scale(0.97);
+    }
+
+    .btn-red { background: #fee2e2; color: #991b1b; }
+    .btn-red:hover { background: #fca5a5; }
+
+    .btn-green { background: #d1fae5; color: #065f46; }
+    .btn-green:hover { background: #6ee7b7; }
+
+    .btn-primary { background: #4f46e5; color: white; }
+    .btn-primary:hover { background: #4338ca; }
+
+    /* QUIZ STYLES */
+    .quiz-box {
+      background: white;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .quiz-question {
+      font-size: 1.5rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .options-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    @media(max-width: 500px) {
+      .options-grid { grid-template-columns: 1fr; }
+    }
+
+    .option-btn {
+      padding: 1rem;
+      border: 2px solid #e5e7eb;
+      background: white;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s;
+    }
+
+    .option-btn:hover {
+      border-color: #4f46e5;
+      background: #f5f3ff;
+    }
+
+    .option-btn.correct {
+      background: #d1fae5;
+      border-color: #10b981;
+      color: #065f46;
+    }
+
+    .option-btn.wrong {
+      background: #fee2e2;
+      border-color: #ef4444;
+      color: #991b1b;
+    }
+
+    /* MATCHING STYLES */
+    .matching-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .matching-column {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .column-title {
+      text-align: center;
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      padding: 0.5rem;
+      border-radius: 8px;
+    }
+
+    .title-pl { background: #e0f2fe; color: #0369a1; }
+    .title-en { background: #f3e8ff; color: #6b21a8; }
+
+    .match-card {
+      padding: 1.25rem 1rem;
+      border-radius: 12px;
+      text-align: center;
+      font-weight: 600;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+    }
+
+    .match-card.card-pl {
+      background: #f0f9ff;
+      border: 2px solid #bae6fd;
+      color: #0369a1;
+    }
+    .match-card.card-pl:hover {
+      background: #e0f2fe;
+      border-color: #38bdf8;
+    }
+    .match-card.card-pl.selected {
+      background: #0284c7;
+      color: white;
+      border-color: #0369a1;
+      transform: scale(1.02);
+    }
+
+    .match-card.card-en {
+      background: #faf5ff;
+      border: 2px solid #e9d5ff;
+      color: #7e22ce;
+    }
+    .match-card.card-en:hover {
+      background: #f3e8ff;
+      border-color: #c084fc;
+    }
+    .match-card.card-en.selected {
+      background: #9333ea;
+      color: white;
+      border-color: #7e22ce;
+      transform: scale(1.02);
+    }
+
+    .match-card.matched {
+      background: #d1fae5 !important;
+      border-color: #10b981 !important;
+      color: #065f46 !important;
+      opacity: 0.5;
+      cursor: default;
+      transform: none !important;
+    }
+
+    .match-card.incorrect {
+      background: #fee2e2 !important;
+      border-color: #ef4444 !important;
+      color: #991b1b !important;
+      animation: shake 0.3s;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      75% { transform: translateX(5px); }
+    }
+
+    /* FORM STYLES */
+    .form-box {
+      background: white;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: #374151;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 0.8rem;
+      border: 2px solid #e5e7eb;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: #4f46e5;
+    }
+
+    .alert-msg {
+      margin-top: 1rem;
+      padding: 0.75rem;
+      border-radius: 8px;
+      text-align: center;
+      font-weight: 600;
+      display: none;
+    }
+
+    .alert-success { background: #d1fae5; color: #065f46; }
+
+    /* DICTIONARY STYLES */
+    .dict-top-bar {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .dict-search {
+      flex: 1;
+      padding: 0.8rem;
+      border: 2px solid #e5e7eb;
+      border-radius: 8px;
+      font-size: 1rem;
+      min-width: 200px;
+    }
+
+    .btn-delete-all {
+      background: #fee2e2;
+      color: #dc2626;
+      border: 2px solid #fca5a5;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+
+    .btn-delete-all:hover {
+      background: #fca5a5;
+    }
+
+    .dict-list {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+
+    .dict-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem;
+      border-bottom: 1px solid #f3f4f6;
+    }
+
+    .dict-item:last-child {
+      border-bottom: none;
+    }
+
+    .dict-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .dict-en { font-weight: 700; color: #111827; }
+    .dict-pl { color: #6b21a8; font-weight: 600; }
+
+    .btn-delete {
+      background: #fee2e2;
+      color: #ef4444;
+      border: none;
+      padding: 0.4rem 0.6rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: background 0.2s;
+    }
+
+    .btn-delete:hover {
+      background: #fca5a5;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 2rem;
+      color: #6b7280;
+      font-weight: 600;
+    }
+
+    /* CUSTOM MODAL ALERT STYLES */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease-in-out;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-card {
+      background: white;
+      width: 90%;
+      max-width: 420px;
+      border-radius: 16px;
+      padding: 1.75rem;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      text-align: center;
+      transform: scale(0.9);
+      transition: transform 0.2s ease-in-out;
+    }
+
+    .modal-overlay.active .modal-card {
+      transform: scale(1);
+    }
+
+    .modal-icon {
+      font-size: 2.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .modal-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 0.5rem;
+    }
+
+    .modal-text {
+      color: #4b5563;
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.4;
+    }
+
+    .modal-actions {
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+    }
+
+    .modal-btn {
+      flex: 1;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: background 0.2s;
+    }
+
+    .modal-btn-cancel {
+      background: #f3f4f6;
+      color: #4b5563;
+    }
+
+    .modal-btn-cancel:hover {
+      background: #e5e7eb;
+    }
+
+    .modal-btn-confirm {
+      background: #ef4444;
+      color: white;
+    }
+
+    .modal-btn-confirm:hover {
+      background: #dc2626;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Nauka Słówek - Angielski</h1>
+    <div class="progress-container">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+    <div class="progress-row">
+      <span class="progress-text" id="progressText">Opanowano: 0 / 17 słów (0%)</span>
+      <button class="btn-reset" onclick="confirmResetProgress()">Resetuj progres</button>
+    </div>
+  </header>
+
+  <nav>
+    <button class="nav-btn active" onclick="switchTab('flashcards', event)">Fiszki</button>
+    <button class="nav-btn" onclick="switchTab('quiz', event)">Quiz</button>
+    <button class="nav-btn" onclick="switchTab('matching', event)">Połącz w pary</button>
+    <button class="nav-btn" onclick="switchTab('dictionary', event)">Słowniczek</button>
+    <button class="nav-btn" onclick="switchTab('addword', event)">Dodaj słówko</button>
+  </nav>
+
+  <main>
+    <!-- TAB 1: FISZKI -->
+    <section id="flashcards" class="view-section active">
+      <div id="flashcardBox">
+        <div class="card-container" onclick="flipCard()">
+          <div class="card" id="flashcard">
+            <div class="card-face card-front">
+              <div class="word-main" id="cardEn">blanket</div>
+              <div class="word-sub">Kliknij, aby zobaczyć tłumaczenie</div>
+            </div>
+            <div class="card-face card-back">
+              <div class="word-main" id="cardPl">koc</div>
+              <div class="word-sub">Kliknij, aby odwrócić</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="controls-row">
+          <button class="btn btn-red" onclick="markKnowledge(false)">Jeszcze nie</button>
+          <button class="btn btn-green" onclick="markKnowledge(true)">Umiem!</button>
+        </div>
+      </div>
+      <div id="flashcardEmpty" class="empty-state" style="display: none;">
+        Brak słówek w bazie. Dodaj nowe słówka w zakładce "Dodaj słówko"!
+      </div>
+    </section>
+
+    <!-- TAB 2: QUIZ -->
+    <section id="quiz" class="view-section">
+      <div class="quiz-box" id="quizBox">
+        <div class="quiz-question" id="quizQuestion">Przetłumacz: blanket</div>
+        <div class="options-grid" id="quizOptions"></div>
+        <div style="text-align: center; margin-top: 1.5rem;">
+          <button class="btn btn-primary" style="margin: 0 auto;" onclick="initQuiz()">Losuj nowe pytanie</button>
+        </div>
+      </div>
+      <div id="quizEmpty" class="empty-state" style="display: none;">
+        Brak słówek w bazie, aby utworzyć quiz.
+      </div>
+    </section>
+
+    <!-- TAB 3: POŁĄCZ W PARY -->
+    <section id="matching" class="view-section">
+      <div id="matchingBox">
+        <div style="text-align: center; margin-bottom: 1rem;">
+          <button class="btn btn-primary" style="margin: 0 auto;" onclick="initMatching()">Losuj nowe pary</button>
+        </div>
+        <div class="matching-container">
+          <div class="matching-column">
+            <div class="column-title title-pl">Język Polski</div>
+            <div id="colPl" class="matching-column"></div>
+          </div>
+          <div class="matching-column">
+            <div class="column-title title-en">Język Angielski</div>
+            <div id="colEn" class="matching-column"></div>
+          </div>
+        </div>
+      </div>
+      <div id="matchingEmpty" class="empty-state" style="display: none;">
+        Brak słówek w bazie, aby połączyć je w pary.
+      </div>
+    </section>
+
+    <!-- TAB 4: SŁOWNICZEK -->
+    <section id="dictionary" class="view-section">
+      <div class="dict-top-bar">
+        <input type="text" class="dict-search" id="dictSearch" placeholder="Szukaj słówka..." oninput="renderDictionary()">
+        <button id="btnDeleteAll" class="btn-delete-all" onclick="confirmDeleteAllWords()">🗑️ Usuń WSZYSTKIE słówka</button>
+      </div>
+      <div class="dict-list" id="dictList"></div>
+    </section>
+
+    <!-- TAB 5: DODAJ SŁÓWKO -->
+    <section id="addword" class="view-section">
+      <div class="form-box">
+        <h2 style="margin-bottom: 1.5rem; text-align: center;">Dodaj własne słówko</h2>
+        <form id="addWordForm" onsubmit="addNewWord(event)">
+          <div class="form-group">
+            <label for="inputEn">Słówko po angielsku:</label>
+            <input type="text" id="inputEn" class="form-input" placeholder="np. pillow" required>
+          </div>
+          <div class="form-group">
+            <label for="inputPl">Tłumaczenie po polsku:</label>
+            <input type="text" id="inputPl" class="form-input" placeholder="np. poduszka" required>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Dodaj do mojej listy słówek</button>
+        </form>
+        <div id="alertMsg" class="alert-msg alert-success">Słówko zostało pomyślnie dodane!</div>
+      </div>
+    </section>
+  </main>
+
+  <!-- CUSTOM MODAL ALERT -->
+  <div class="modal-overlay" id="customModal">
+    <div class="modal-card">
+      <div class="modal-icon">⚠️</div>
+      <div class="modal-title" id="modalTitle">Potwierdzenie</div>
+      <div class="modal-text" id="modalText">Czy na pewno chcesz wykonać tę operację?</div>
+      <div class="modal-actions">
+        <button class="modal-btn modal-btn-cancel" onclick="closeModal()">Anuluj</button>
+        <button class="modal-btn modal-btn-confirm" id="modalConfirmBtn">Potwierdź</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const defaultVocabulary = [
+      { id: 1, en: "blanket", pl: "koc" },
+      { id: 2, en: "bunk bed", pl: "łóżko piętrowe" },
+      { id: 3, en: "ceiling", pl: "sufit" },
+      { id: 4, en: "cellar", pl: "piwnica" },
+      { id: 5, en: "chest of drawers", pl: "komoda" },
+      { id: 6, en: "cloakroom", pl: "garderoba, szatnia" },
+      { id: 7, en: "corridor", pl: "korytarz" },
+      { id: 8, en: "curtains", pl: "zasłony" },
+      { id: 9, en: "entrance hall", pl: "hol wejściowy" },
+      { id: 10, en: "poster", pl: "plakat" },
+      { id: 11, en: "sideboard", pl: "kredens" },
+      { id: 12, en: "spare bedroom", pl: "dodatkowa sypialnia" },
+      { id: 13, en: "stool", pl: "stołek" },
+      { id: 14, en: "central heating", pl: "centralne ogrzewanie" },
+      { id: 15, en: "iron", pl: "żelazko" },
+      { id: 16, en: "hedge", pl: "żywopłot" },
+      { id: 17, en: "lawn", pl: "trawnik" }
+    ];
+
+    let deletedIds = JSON.parse(localStorage.getItem('deletedIds')) || [];
+    let customWords = JSON.parse(localStorage.getItem('customWords')) || [];
+    let learnedWords = JSON.parse(localStorage.getItem('learnedWords')) || [];
+    
+    let vocabulary = [];
+    refreshVocabulary();
+
+    let currentCardIndex = 0;
+    let selectedPl = null;
+    let selectedEn = null;
+    let pendingAction = null;
+
+    updateProgress();
+    loadCard(currentCardIndex);
+
+    function refreshVocabulary() {
+      const activeDefault = defaultVocabulary.filter(item => !deletedIds.includes(item.id));
+      vocabulary = [...activeDefault, ...customWords];
+      updateProgress();
+    }
+
+    function switchTab(tabId, evt) {
+      document.querySelectorAll('.view-section').forEach(sec => sec.classList.remove('active'));
+      document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+      
+      document.getElementById(tabId).classList.add('active');
+      if (evt) evt.target.classList.add('active');
+
+      if (tabId === 'flashcards') loadCard(currentCardIndex);
+      if (tabId === 'quiz') initQuiz();
+      if (tabId === 'matching') initMatching();
+      if (tabId === 'dictionary') renderDictionary();
+    }
+
+    // MODAL LOGIC
+    function showModal(title, text, onConfirm) {
+      document.getElementById('modalTitle').innerText = title;
+      document.getElementById('modalText').innerText = text;
+      pendingAction = onConfirm;
+      document.getElementById('customModal').classList.add('active');
+    }
+
+    function closeModal() {
+      document.getElementById('customModal').classList.remove('active');
+      pendingAction = null;
+    }
+
+    document.getElementById('modalConfirmBtn').addEventListener('click', () => {
+      if (pendingAction) pendingAction();
+      closeModal();
+    });
+
+    // FISZKI
+    function loadCard(index) {
+      const box = document.getElementById('flashcardBox');
+      const empty = document.getElementById('flashcardEmpty');
+      
+      if (vocabulary.length === 0) {
+        box.style.display = 'none';
+        empty.style.display = 'block';
+        return;
+      }
+      
+      box.style.display = 'block';
+      empty.style.display = 'none';
+      
+      if (index >= vocabulary.length) currentCardIndex = 0;
+      const item = vocabulary[currentCardIndex];
+      document.getElementById('cardEn').innerText = item.en;
+      document.getElementById('cardPl').innerText = item.pl;
+    }
+
+    function flipCard() {
+      document.getElementById('flashcard').classList.toggle('flipped');
+    }
+
+    function markKnowledge(isKnown) {
+      if (vocabulary.length === 0) return;
+      const currentId = vocabulary[currentCardIndex].id;
+      if (isKnown && !learnedWords.includes(currentId)) {
+        learnedWords.push(currentId);
+      } else if (!isKnown && learnedWords.includes(currentId)) {
+        learnedWords = learnedWords.filter(id => id !== currentId);
+      }
+      localStorage.setItem('learnedWords', JSON.stringify(learnedWords));
+      updateProgress();
+      
+      const flashcardEl = document.getElementById('flashcard');
+      const isFlipped = flashcardEl.classList.contains('flipped');
+
+      if (isFlipped) {
+        flashcardEl.classList.remove('flipped');
+        setTimeout(() => {
+          currentCardIndex = (currentCardIndex + 1) % vocabulary.length;
+          loadCard(currentCardIndex);
+        }, 200);
+      } else {
+        currentCardIndex = (currentCardIndex + 1) % vocabulary.length;
+        loadCard(currentCardIndex);
+      }
+    }
+
+    function updateProgress() {
+      const activeLearned = learnedWords.filter(id => vocabulary.some(w => w.id === id));
+      const count = activeLearned.length;
+      const total = vocabulary.length;
+      const pct = total > 0 ? Math.round((count / total) * 100) : 0;
+      document.getElementById('progressBar').style.width = pct + '%';
+      document.getElementById('progressText').innerText = `Opanowano: ${count} / ${total} słów (${pct}%)`;
+    }
+
+    function confirmResetProgress() {
+      showModal(
+        "Resetowanie progresu",
+        "Czy na pewno chcesz zresetować cały swój postęp nauki?",
+        () => {
+          learnedWords = [];
+          localStorage.removeItem('learnedWords');
+          updateProgress();
+        }
+      );
+    }
+
+    // DODAWANIE I USUWANIE
+    function addNewWord(e) {
+      e.preventDefault();
+      const en = document.getElementById('inputEn').value.trim();
+      const pl = document.getElementById('inputPl').value.trim();
+
+      if (!en || !pl) return;
+
+      const newWord = {
+        id: Date.now(),
+        en: en,
+        pl: pl,
+        isCustom: true
+      };
+
+      customWords.push(newWord);
+      localStorage.setItem('customWords', JSON.stringify(customWords));
+      refreshVocabulary();
+
+      document.getElementById('inputEn').value = '';
+      document.getElementById('inputPl').value = '';
+
+      const alertMsg = document.getElementById('alertMsg');
+      alertMsg.style.display = 'block';
+      setTimeout(() => { alertMsg.style.display = 'none'; }, 2500);
+    }
+
+    function confirmDeleteWord(id, wordEn) {
+      showModal(
+        "Usuwanie słówka",
+        `Czy na pewno chcesz usunąć słówko "${wordEn}" ze swojej bazy?`,
+        () => {
+          const isCustomWord = customWords.some(w => w.id === id);
+          if (isCustomWord) {
+            customWords = customWords.filter(w => w.id !== id);
+            localStorage.setItem('customWords', JSON.stringify(customWords));
+          } else {
+            deletedIds.push(id);
+            localStorage.setItem('deletedIds', JSON.stringify(deletedIds));
+          }
+
+          learnedWords = learnedWords.filter(lId => lId !== id);
+          localStorage.setItem('learnedWords', JSON.stringify(learnedWords));
+
+          refreshVocabulary();
+          renderDictionary();
+          loadCard(currentCardIndex);
+        }
+      );
+    }
+
+    function confirmDeleteAllWords() {
+      showModal(
+        "Usuwanie wszystkich słówek",
+        "Czy na pewno chcesz usunąć WSZYSTKIE słówka z bazy?",
+        () => {
+          customWords = [];
+          deletedIds = defaultVocabulary.map(w => w.id);
+          learnedWords = [];
+          
+          localStorage.setItem('customWords', JSON.stringify(customWords));
+          localStorage.setItem('deletedIds', JSON.stringify(deletedIds));
+          localStorage.removeItem('learnedWords');
+
+          refreshVocabulary();
+          renderDictionary();
+          loadCard(0);
+        }
+      );
+    }
+
+    // QUIZ
+    function initQuiz() {
+      const box = document.getElementById('quizBox');
+      const empty = document.getElementById('quizEmpty');
+
+      if (vocabulary.length === 0) {
+        box.style.display = 'none';
+        empty.style.display = 'block';
+        return;
+      }
+
+      box.style.display = 'block';
+      empty.style.display = 'none';
+
+      const item = vocabulary[Math.floor(Math.random() * vocabulary.length)];
+      document.getElementById('quizQuestion').innerText = `Przetłumacz: "${item.en}"`;
+
+      let options = [item.pl];
+      while (options.length < Math.min(4, vocabulary.length)) {
+        const rand = vocabulary[Math.floor(Math.random() * vocabulary.length)].pl;
+        if (!options.includes(rand)) options.push(rand);
+      }
+      options.sort(() => Math.random() - 0.5);
+
+      const grid = document.getElementById('quizOptions');
+      grid.innerHTML = '';
+      options.forEach(opt => {
+        const btn = document.createElement('button');
+        btn.className = 'option-btn';
+        btn.innerText = opt;
+        btn.onclick = () => checkQuiz(btn, opt === item.pl);
+        grid.appendChild(btn);
+      });
+    }
+
+    function checkQuiz(btn, isCorrect) {
+      if (isCorrect) {
+        btn.classList.add('correct');
+        setTimeout(initQuiz, 1000);
+      } else {
+        btn.classList.add('wrong');
+      }
+    }
+
+    // POŁĄCZ W PARY
+    function initMatching() {
+      const box = document.getElementById('matchingBox');
+      const empty = document.getElementById('matchingEmpty');
+
+      if (vocabulary.length === 0) {
+        box.style.display = 'none';
+        empty.style.display = 'block';
+        return;
+      }
+
+      box.style.display = 'block';
+      empty.style.display = 'none';
+
+      selectedPl = null;
+      selectedEn = null;
+      
+      const countToPick = Math.min(6, vocabulary.length);
+      const shuffled = [...vocabulary].sort(() => Math.random() - 0.5).slice(0, countToPick);
+      const colPl = document.getElementById('colPl');
+      const colEn = document.getElementById('colEn');
+      
+      colPl.innerHTML = '';
+      colEn.innerHTML = '';
+
+      const itemsPl = [...shuffled].sort(() => Math.random() - 0.5);
+      const itemsEn = [...shuffled].sort(() => Math.random() - 0.5);
+
+      itemsPl.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'match-card card-pl';
+        card.innerText = item.pl;
+        card.dataset.id = item.id;
+        card.onclick = () => selectCard(card, 'pl');
+        colPl.appendChild(card);
+      });
+
+      itemsEn.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'match-card card-en';
+        card.innerText = item.en;
+        card.dataset.id = item.id;
+        card.onclick = () => selectCard(card, 'en');
+        colEn.appendChild(card);
+      });
+    }
+
+    function selectCard(card, type) {
+      if (card.classList.contains('matched')) return;
+
+      if (type === 'pl') {
+        if (selectedPl) selectedPl.classList.remove('selected');
+        selectedPl = card;
+        card.classList.add('selected');
+      } else {
+        if (selectedEn) selectedEn.classList.remove('selected');
+        selectedEn = card;
+        card.classList.add('selected');
+      }
+
+      if (selectedPl && selectedEn) {
+        if (selectedPl.dataset.id === selectedEn.dataset.id) {
+          selectedPl.classList.remove('selected');
+          selectedEn.classList.remove('selected');
+          selectedPl.classList.add('matched');
+          selectedEn.classList.add('matched');
+          selectedPl = null;
+          selectedEn = null;
+        } else {
+          const el1 = selectedPl;
+          const el2 = selectedEn;
+          el1.classList.add('incorrect');
+          el2.classList.add('incorrect');
+          setTimeout(() => {
+            el1.classList.remove('incorrect', 'selected');
+            el2.classList.remove('incorrect', 'selected');
+          }, 500);
+          selectedPl = null;
+          selectedEn = null;
+        }
+      }
+    }
+
+    // SŁOWNICZEK
+    function renderDictionary() {
+      const query = document.getElementById('dictSearch').value.toLowerCase();
+      const list = document.getElementById('dictList');
+      const btnDeleteAll = document.getElementById('btnDeleteAll');
+      
+      btnDeleteAll.style.display = vocabulary.length > 0 ? 'inline-block' : 'none';
+      list.innerHTML = '';
+
+      const filtered = vocabulary.filter(item => item.en.toLowerCase().includes(query) || item.pl.toLowerCase().includes(query));
+
+      if (filtered.length === 0) {
+        list.innerHTML = '<div class="empty-state">Brak słówek w bazie.</div>';
+        return;
+      }
+
+      filtered.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'dict-item';
+        div.innerHTML = `
+          <div class="dict-info">
+            <span class="dict-en">${item.en}</span>
+            <span class="dict-pl">${item.pl}</span>
+          </div>
+          <button class="btn-delete" onclick="confirmDeleteWord(${item.id}, '${item.en.replace(/'/g, "\\'")}')">🗑️ Usuń</button>
+        `;
+        list.appendChild(div);
+      });
+    }
+  </script>
+</body>
+</html>
