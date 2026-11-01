@@ -1487,7 +1487,7 @@
         tile.className = 'unit-tile';
         tile.onclick = () => openUnitDetail(u);
         tile.innerHTML = `
-          <div class="unit-tile-title">📂 ${u === 'Własne' ? '⭐ Własne słówka' : u}</div>
+          <div class="unit-tile-title">📂 ${u === 'Własne' ? 'Własne słówka' : u}</div>
           <div class="unit-tile-count">${unitWords.length} słówek w bazie</div>
         `;
         tilesContainer.appendChild(tile);
@@ -1518,7 +1518,7 @@
 
       let unitHtml = `
         <div class="unit-header">
-          <span class="unit-title">📂 ${u === 'Własne' ? '⭐ Własne słówka' : u}</span>
+          <span class="unit-title">📂 ${u === 'Własne' ? 'Własne słówka' : u}</span>
           <div>
             <button class="btn-small btn-outline" onclick="toggleUnit('${u}', true)">Zaznacz całe</button>
             <button class="btn-small btn-outline" onclick="toggleUnit('${u}', false)" style="margin-left: 0.25rem;">Odznacz całe</button>
