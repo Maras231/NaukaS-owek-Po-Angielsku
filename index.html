@@ -33,6 +33,16 @@
       margin-bottom: 0.5rem;
     }
 
+    .active-filter-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 0.3rem 0.8rem;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-top: 0.5rem;
+    }
+
     .progress-container {
       max-width: 600px;
       margin: 1rem auto 0;
@@ -205,9 +215,7 @@
       gap: 0.5rem;
     }
 
-    .btn:active {
-      transform: scale(0.97);
-    }
+    .btn:active { transform: scale(0.97); }
 
     .btn-red { background: #fee2e2; color: #991b1b; }
     .btn-red:hover { background: #fca5a5; }
@@ -366,6 +374,205 @@
       75% { transform: translateX(5px); }
     }
 
+    /* KAFELKI UNITÓW */
+    .units-tiles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .unit-tile {
+      background: white;
+      border: 2px solid #e5e7eb;
+      border-radius: 16px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      cursor: pointer;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+      transition: all 0.2s ease;
+    }
+
+    .unit-tile:hover {
+      border-color: #4f46e5;
+      transform: translateY(-4px);
+      box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.15);
+      background: #fafafe;
+    }
+
+    .unit-tile-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #4f46e5;
+      margin-bottom: 0.5rem;
+    }
+
+    .unit-tile-count {
+      font-size: 0.9rem;
+      color: #6b7280;
+      font-weight: 600;
+    }
+
+    /* SZCZEGÓŁY UNITA */
+    .unit-detail-view {
+      display: none;
+    }
+
+    .unit-detail-view.active {
+      display: block;
+    }
+
+    .unit-box {
+      background: white;
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+    }
+
+    .unit-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      border-bottom: 2px solid #f3f4f6;
+      padding-bottom: 1rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .unit-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #4f46e5;
+    }
+
+    .sections-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .section-card {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 1rem;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.75rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .section-title {
+      font-weight: 600;
+      color: #374151;
+      font-size: 1.05rem;
+    }
+
+    .words-checkboxes {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 0.6rem;
+      margin-top: 0.5rem;
+    }
+
+    /* CHECKBOXY Z WYMIENIONYM RADIUSEM I KOLOREM */
+    .word-item-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: white;
+      padding: 0.4rem 0.6rem;
+      border-radius: 10px;
+      border: 1px solid #e5e7eb;
+      transition: all 0.2s;
+    }
+    .word-item-wrapper:hover {
+      border-color: #c7d2fe;
+      background: #f5f3ff;
+    }
+
+    .word-checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.95rem;
+      cursor: pointer;
+      flex: 1;
+    }
+
+    .word-checkbox-label input[type="checkbox"] {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 20px;
+      height: 20px;
+      border: 2px solid #cbd5e1;
+      border-radius: 8px;
+      outline: none;
+      cursor: pointer;
+      display: grid;
+      place-content: center;
+      transition: all 0.2s ease;
+      background-color: white;
+      flex-shrink: 0;
+    }
+
+    .word-checkbox-label input[type="checkbox"]::before {
+      content: "";
+      width: 10px;
+      height: 6px;
+      border-left: 2px solid white;
+      border-bottom: 2px solid white;
+      transform: scale(0) rotate(-45deg);
+      transition: transform 0.15s ease-in-out;
+      margin-top: -2px;
+    }
+
+    .word-checkbox-label input[type="checkbox"]:checked {
+      background-color: #4f46e5;
+      border-color: #4f46e5;
+    }
+
+    .word-checkbox-label input[type="checkbox"]:checked::before {
+      transform: scale(1) rotate(-45deg);
+    }
+
+    .btn-delete-word {
+      background: #fee2e2;
+      color: #ef4444;
+      border: none;
+      padding: 0.3rem 0.5rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.75rem;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .btn-delete-word:hover {
+      background: #fca5a5;
+    }
+
+    .btn-small {
+      padding: 0.4rem 0.9rem;
+      border-radius: 8px;
+      border: none;
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn-outline {
+      background: white;
+      border: 1px solid #d1d5db;
+      color: #374151;
+    }
+    .btn-outline:hover { background: #f3f4f6; border-color: #9ca3af; }
+
     /* FORM STYLES */
     .form-box {
       background: white;
@@ -428,22 +635,6 @@
       min-width: 200px;
     }
 
-    .btn-delete-all {
-      background: #fee2e2;
-      color: #dc2626;
-      border: 2px solid #fca5a5;
-      padding: 0.8rem 1.2rem;
-      border-radius: 8px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.2s;
-      white-space: nowrap;
-    }
-
-    .btn-delete-all:hover {
-      background: #fca5a5;
-    }
-
     .dict-list {
       background: white;
       border-radius: 12px;
@@ -459,9 +650,7 @@
       border-bottom: 1px solid #f3f4f6;
     }
 
-    .dict-item:last-child {
-      border-bottom: none;
-    }
+    .dict-item:last-child { border-bottom: none; }
 
     .dict-info {
       display: flex;
@@ -470,21 +659,7 @@
 
     .dict-en { font-weight: 700; color: #111827; }
     .dict-pl { color: #6b21a8; font-weight: 600; }
-
-    .btn-delete {
-      background: #fee2e2;
-      color: #ef4444;
-      border: none;
-      padding: 0.4rem 0.6rem;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 0.85rem;
-      transition: background 0.2s;
-    }
-
-    .btn-delete:hover {
-      background: #fca5a5;
-    }
+    .dict-tag { font-size: 0.75rem; color: #6b7280; font-weight: 500; margin-top: 2px; }
 
     .empty-state {
       text-align: center;
@@ -493,109 +668,48 @@
       font-weight: 600;
     }
 
-    /* CUSTOM MODAL ALERT STYLES */
+    /* MODAL */
     .modal-overlay {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
       background: rgba(0, 0, 0, 0.4);
       backdrop-filter: blur(4px);
       display: flex;
       align-items: center;
       justify-content: center;
       z-index: 1000;
-      opacity: 0;
-      pointer-events: none;
+      opacity: 0; pointer-events: none;
       transition: opacity 0.2s ease-in-out;
     }
-
-    .modal-overlay.active {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
+    .modal-overlay.active { opacity: 1; pointer-events: auto; }
     .modal-card {
-      background: white;
-      width: 90%;
-      max-width: 420px;
-      border-radius: 16px;
-      padding: 1.75rem;
-      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-      text-align: center;
-      transform: scale(0.9);
-      transition: transform 0.2s ease-in-out;
+      background: white; width: 90%; max-width: 420px;
+      border-radius: 16px; padding: 1.75rem; text-align: center;
+      box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+      transform: scale(0.9); transition: transform 0.2s ease-in-out;
     }
-
-    .modal-overlay.active .modal-card {
-      transform: scale(1);
-    }
-
-    .modal-icon {
-      font-size: 2.5rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .modal-title {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: #111827;
-      margin-bottom: 0.5rem;
-    }
-
-    .modal-text {
-      color: #4b5563;
-      font-size: 0.95rem;
-      margin-bottom: 1.5rem;
-      line-height: 1.4;
-    }
-
-    .modal-actions {
-      display: flex;
-      justify-content: center;
-      gap: 0.75rem;
-    }
-
-    .modal-btn {
-      flex: 1;
-      padding: 0.75rem 1rem;
-      border-radius: 8px;
-      font-weight: 600;
-      border: none;
-      cursor: pointer;
-      font-size: 0.95rem;
-      transition: background 0.2s;
-    }
-
-    .modal-btn-cancel {
-      background: #f3f4f6;
-      color: #4b5563;
-    }
-
-    .modal-btn-cancel:hover {
-      background: #e5e7eb;
-    }
-
-    .modal-btn-confirm {
-      background: #ef4444;
-      color: white;
-    }
-
-    .modal-btn-confirm:hover {
-      background: #dc2626;
-    }
+    .modal-overlay.active .modal-card { transform: scale(1); }
+    .modal-icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+    .modal-title { font-size: 1.25rem; font-weight: 700; color: #111827; margin-bottom: 0.5rem; }
+    .modal-text { color: #4b5563; font-size: 0.95rem; margin-bottom: 1.5rem; }
+    .modal-actions { display: flex; justify-content: center; gap: 0.75rem; }
+    .modal-btn { flex: 1; padding: 0.75rem 1rem; border-radius: 8px; font-weight: 600; border: none; cursor: pointer; }
+    .modal-btn-cancel { background: #f3f4f6; color: #4b5563; }
+    .modal-btn-confirm { background: #ef4444; color: white; }
   </style>
 </head>
 <body>
 
   <header>
     <h1>Nauka Słówek - Angielski</h1>
+    <div id="filterBadge" class="active-filter-badge">Brak zaznaczonych słówek</div>
+
     <div class="progress-container">
       <div class="progress-bar" id="progressBar"></div>
     </div>
     <div class="progress-row">
-      <span class="progress-text" id="progressText">Opanowano: 0 / 17 słów (0%)</span>
+      <span class="progress-text" id="progressText">Opanowano: 0 / 0 słów (0%)</span>
       <button class="btn-reset" onclick="confirmResetProgress()">Resetuj progres</button>
     </div>
   </header>
@@ -605,7 +719,8 @@
     <button class="nav-btn" onclick="switchTab('quiz', event)">Quiz</button>
     <button class="nav-btn" onclick="switchTab('matching', event)">Połącz w pary</button>
     <button class="nav-btn" onclick="switchTab('dictionary', event)">Słowniczek</button>
-    <button class="nav-btn" onclick="switchTab('addword', event)">Dodaj słówko</button>
+    <button class="nav-btn" onclick="switchTab('unitSelectorTab', event)">📂 Wybierz Unit</button>
+    <button class="nav-btn" onclick="switchTab('addword', event)">➕ Dodaj słówko</button>
   </nav>
 
   <main>
@@ -631,7 +746,7 @@
         </div>
       </div>
       <div id="flashcardEmpty" class="empty-state" style="display: none;">
-        Brak słówek w bazie. Dodaj nowe słówka w zakładce "Dodaj słówko"!
+        Brak zaznaczonych słówek. Przejdź do zakładki <b>"📂 Wybierz Unit"</b> i zaznacz interesujące Cię słówka!
       </div>
     </section>
 
@@ -645,7 +760,7 @@
         </div>
       </div>
       <div id="quizEmpty" class="empty-state" style="display: none;">
-        Brak słówek w bazie, aby utworzyć quiz.
+        Brak zaznaczonych słówek do quizu. Wybierz słówka w zakładce "📂 Wybierz Unit".
       </div>
     </section>
 
@@ -667,7 +782,7 @@
         </div>
       </div>
       <div id="matchingEmpty" class="empty-state" style="display: none;">
-        Brak słówek w bazie, aby połączyć je w pary.
+        Brak zaznaczonych słówek do gry w pary.
       </div>
     </section>
 
@@ -675,12 +790,34 @@
     <section id="dictionary" class="view-section">
       <div class="dict-top-bar">
         <input type="text" class="dict-search" id="dictSearch" placeholder="Szukaj słówka..." oninput="renderDictionary()">
-        <button id="btnDeleteAll" class="btn-delete-all" onclick="confirmDeleteAllWords()">🗑️ Usuń WSZYSTKIE słówka</button>
       </div>
       <div class="dict-list" id="dictList"></div>
     </section>
 
-    <!-- TAB 5: DODAJ SŁÓWKO -->
+    <!-- TAB 5: WYBIERZ UNIT -->
+    <section id="unitSelectorTab" class="view-section">
+      <!-- WIDOK KAFELKÓW -->
+      <div id="unitsTilesView">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+          <h2>Wybierz Unit do nauki</h2>
+          <div>
+            <button class="btn-small btn-outline" onclick="selectAllWords(true)">Zaznacz wszystkie</button>
+            <button class="btn-small btn-outline" onclick="selectAllWords(false)" style="margin-left: 0.5rem;">Odznacz wszystkie</button>
+          </div>
+        </div>
+        <div class="units-tiles-grid" id="unitsTilesGrid"></div>
+      </div>
+
+      <!-- WIDOK SZCZEGÓŁOWY -->
+      <div id="unitDetailView" class="unit-detail-view">
+        <div style="margin-bottom: 1rem;">
+          <button class="btn-small btn-outline" onclick="backToTiles()">⬅ Powrót do listy Unitów</button>
+        </div>
+        <div class="unit-box" id="unitDetailContainer"></div>
+      </div>
+    </section>
+
+    <!-- TAB 6: DODAJ SŁÓWKO -->
     <section id="addword" class="view-section">
       <div class="form-box">
         <h2 style="margin-bottom: 1.5rem; text-align: center;">Dodaj własne słówko</h2>
@@ -693,14 +830,14 @@
             <label for="inputPl">Tłumaczenie po polsku:</label>
             <input type="text" id="inputPl" class="form-input" placeholder="np. poduszka" required>
           </div>
-          <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Dodaj do mojej listy słówek</button>
+          <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Dodaj do bazy</button>
         </form>
-        <div id="alertMsg" class="alert-msg alert-success">Słówko zostało pomyślnie dodane!</div>
+        <div id="alertMsg" class="alert-msg alert-success">Słówko zostało pomyślnie dodane do sekcji "Własne słówka"!</div>
       </div>
     </section>
   </main>
 
-  <!-- CUSTOM MODAL ALERT -->
+  <!-- CUSTOM MODAL -->
   <div class="modal-overlay" id="customModal">
     <div class="modal-card">
       <div class="modal-icon">⚠️</div>
@@ -715,44 +852,809 @@
 
   <script>
     const defaultVocabulary = [
-      { id: 1, en: "blanket", pl: "koc" },
-      { id: 2, en: "bunk bed", pl: "łóżko piętrowe" },
-      { id: 3, en: "ceiling", pl: "sufit" },
-      { id: 4, en: "cellar", pl: "piwnica" },
-      { id: 5, en: "chest of drawers", pl: "komoda" },
-      { id: 6, en: "cloakroom", pl: "garderoba, szatnia" },
-      { id: 7, en: "corridor", pl: "korytarz" },
-      { id: 8, en: "curtains", pl: "zasłony" },
-      { id: 9, en: "entrance hall", pl: "hol wejściowy" },
-      { id: 10, en: "poster", pl: "plakat" },
-      { id: 11, en: "sideboard", pl: "kredens" },
-      { id: 12, en: "spare bedroom", pl: "dodatkowa sypialnia" },
-      { id: 13, en: "stool", pl: "stołek" },
-      { id: 14, en: "central heating", pl: "centralne ogrzewanie" },
-      { id: 15, en: "iron", pl: "żelazko" },
-      { id: 16, en: "hedge", pl: "żywopłot" },
-      { id: 17, en: "lawn", pl: "trawnik" }
+      // --- UNIT 2 ---
+      { id: 201, unit: "Unit 2", section: "Types of home", en: "apartment", pl: "mieszkanie" },
+      { id: 202, unit: "Unit 2", section: "Types of home", en: "bungalow", pl: "dom parterowy" },
+      { id: 203, unit: "Unit 2", section: "Types of home", en: "caravan", pl: "przyczepa kempingowa" },
+      { id: 204, unit: "Unit 2", section: "Types of home", en: "charming", pl: "uroczy/urokliwy" },
+      { id: 205, unit: "Unit 2", section: "Types of home", en: "cottage", pl: "domek wiejski" },
+      { id: 206, unit: "Unit 2", section: "Types of home", en: "dark", pl: "ciemny" },
+      { id: 207, unit: "Unit 2", section: "Types of home", en: "detached house", pl: "dom wolnostojący" },
+      { id: 208, unit: "Unit 2", section: "Types of home", en: "expensive", pl: "drogi, kosztowny" },
+      { id: 209, unit: "Unit 2", section: "Types of home", en: "flat", pl: "mieszkanie" },
+      { id: 210, unit: "Unit 2", section: "Types of home", en: "huge", pl: "ogromny" },
+      { id: 211, unit: "Unit 2", section: "Types of home", en: "mobile home", pl: "dom mobilny (dom na kółkach)" },
+      { id: 212, unit: "Unit 2", section: "Types of home", en: "modern", pl: "nowoczesny" },
+      { id: 213, unit: "Unit 2", section: "Types of home", en: "terraced house", pl: "dom szeregowy, segment" },
+      { id: 214, unit: "Unit 2", section: "Types of home", en: "tiny", pl: "mały, malutki" },
+      { id: 215, unit: "Unit 2", section: "Types of home", en: "ugly", pl: "brzydki" },
+      { id: 216, unit: "Unit 2", section: "Phrases", en: "an old / new / big block of flats", pl: "starym/nowym/dużym bloku" },
+      { id: 217, unit: "Unit 2", section: "Phrases", en: "a nice part of town", pl: "ładnej dzielnicy miasta" },
+      { id: 218, unit: "Unit 2", section: "Phrases", en: "the centre of the town / city", pl: "centrum miasta" },
+      { id: 219, unit: "Unit 2", section: "Phrases", en: "the country(side)", pl: "na wsi" },
+      { id: 220, unit: "Unit 2", section: "Phrases", en: "the mountains / woods", pl: "górach/lesie" },
+      { id: 221, unit: "Unit 2", section: "Phrases", en: "far from / near", pl: "daleko od/blisko" },
+      { id: 222, unit: "Unit 2", section: "Phrases", en: "a park / a forest", pl: "parku/lasu" },
+      { id: 223, unit: "Unit 2", section: "Phrases", en: "the sea / a river", pl: "morza/rzeki" },
+      { id: 224, unit: "Unit 2", section: "Phrases", en: "the shops / my school", pl: "sklepów/szkoły" },
+      { id: 225, unit: "Unit 2", section: "Phrases", en: "an island", pl: "na wyspie" },
+      { id: 226, unit: "Unit 2", section: "Phrases", en: "the edge of town", pl: "obrzeżach, skraju miasta" },
+      { id: 227, unit: "Unit 2", section: "Phrases", en: "the ground / top / first floor", pl: "parterze/najwyższym piętrze/pierwszym piętrze" },
+      { id: 228, unit: "Unit 2", section: "Phrases", en: "surrounded by", pl: "w otoczeniu" },
+      { id: 229, unit: "Unit 2", section: "Phrases", en: "fields / houses / trees", pl: "pól/domów/drzew" },
+      { id: 230, unit: "Unit 2", section: "Phrases", en: "a big / small / huge garden", pl: "dużym/małym/ogromnym ogrodem" },
+      { id: 231, unit: "Unit 2", section: "Phrases", en: "a great view", pl: "wspaniałym widokiem" },
+      { id: 232, unit: "Unit 2", section: "Phrases", en: "loads of rooms", pl: "wieloma pokojami" },
+      { id: 233, unit: "Unit 2", section: "Phrases", en: "lots of neighbours", pl: "wieloma sąsiadami" },
+      { id: 234, unit: "Unit 2", section: "Phrases", en: "plenty of space inside / outside", pl: "dużą ilością miejsca w środku/na zewnątrz" },
+      { id: 235, unit: "Unit 2", section: "Outside the house", en: "barbecue", pl: "grill" },
+      { id: 236, unit: "Unit 2", section: "Outside the house", en: "café", pl: "kawiarnia" },
+      { id: 237, unit: "Unit 2", section: "Outside the house", en: "dustbin", pl: "pojemnik na śmieci" },
+      { id: 238, unit: "Unit 2", section: "Outside the house", en: "garage", pl: "garaż" },
+      { id: 239, unit: "Unit 2", section: "Outside the house", en: "garden", pl: "ogród" },
+      { id: 240, unit: "Unit 2", section: "Outside the house", en: "hedge", pl: "żywopłot" },
+      { id: 241, unit: "Unit 2", section: "Outside the house", en: "lawn", pl: "trawnik" },
+      { id: 242, unit: "Unit 2", section: "Outside the house", en: "plant", pl: "roślina" },
+      { id: 243, unit: "Unit 2", section: "Outside the house", en: "playground", pl: "plac zabaw" },
+      { id: 244, unit: "Unit 2", section: "Outside the house", en: "swimming pool", pl: "basen" },
+      { id: 245, unit: "Unit 2", section: "Inside the house", en: "armchair", pl: "fotel" },
+      { id: 246, unit: "Unit 2", section: "Inside the house", en: "balcony", pl: "balkon" },
+      { id: 247, unit: "Unit 2", section: "Inside the house", en: "basement", pl: "piwnica" },
+      { id: 248, unit: "Unit 2", section: "Inside the house", en: "basin", pl: "umywalka" },
+      { id: 249, unit: "Unit 2", section: "Inside the house", en: "bath", pl: "wanna" },
+      { id: 250, unit: "Unit 2", section: "Inside the house", en: "bathroom", pl: "łazienka" },
+      { id: 251, unit: "Unit 2", section: "Inside the house", en: "bedroom", pl: "sypialnia" },
+      { id: 252, unit: "Unit 2", section: "Inside the house", en: "blanket", pl: "koc" },
+      { id: 253, unit: "Unit 2", section: "Inside the house", en: "bookcase", pl: "regał na książki" },
+      { id: 254, unit: "Unit 2", section: "Inside the house", en: "bunk bed", pl: "łóżko piętrowe" },
+      { id: 255, unit: "Unit 2", section: "Inside the house", en: "ceiling", pl: "sufit" },
+      { id: 256, unit: "Unit 2", section: "Inside the house", en: "cellar", pl: "piwnica (pomieszczenie do przechowywania)" },
+      { id: 257, unit: "Unit 2", section: "Inside the house", en: "chair", pl: "krzesło" },
+      { id: 258, unit: "Unit 2", section: "Inside the house", en: "chest of drawers", pl: "komoda" },
+      { id: 259, unit: "Unit 2", section: "Inside the house", en: "cloakroom", pl: "garderoba, szatnia" },
+      { id: 260, unit: "Unit 2", section: "Inside the house", en: "coffee table", pl: "stolik kawowy" },
+      { id: 261, unit: "Unit 2", section: "Inside the house", en: "corridor", pl: "korytarz" },
+      { id: 262, unit: "Unit 2", section: "Inside the house", en: "cupboard", pl: "szafka kuchenna" },
+      { id: 263, unit: "Unit 2", section: "Inside the house", en: "curtains", pl: "zasłony" },
+      { id: 264, unit: "Unit 2", section: "Inside the house", en: "cushions", pl: "poduszki ozdobne" },
+      { id: 265, unit: "Unit 2", section: "Inside the house", en: "dining chair", pl: "krzesło z jadalni" },
+      { id: 266, unit: "Unit 2", section: "Inside the house", en: "dining room", pl: "jadalnia" },
+      { id: 267, unit: "Unit 2", section: "Inside the house", en: "dining table", pl: "stół w jadalni" },
+      { id: 268, unit: "Unit 2", section: "Inside the house", en: "entrance hall", pl: "hol wejściowy, przedpokój" },
+      { id: 269, unit: "Unit 2", section: "Inside the house", en: "fireplace", pl: "kominek" },
+      { id: 270, unit: "Unit 2", section: "Inside the house", en: "ground floor", pl: "parter" },
+      { id: 271, unit: "Unit 2", section: "Inside the house", en: "kitchen", pl: "kuchnia" },
+      { id: 272, unit: "Unit 2", section: "Inside the house", en: "living room / lounge", pl: "salon" },
+      { id: 273, unit: "Unit 2", section: "Inside the house", en: "mirror", pl: "lustro" },
+      { id: 274, unit: "Unit 2", section: "Inside the house", en: "office", pl: "gabinet, biuro" },
+      { id: 275, unit: "Unit 2", section: "Inside the house", en: "pillow", pl: "poduszka" },
+      { id: 276, unit: "Unit 2", section: "Inside the house", en: "poster", pl: "plakat" },
+      { id: 277, unit: "Unit 2", section: "Inside the house", en: "shelf", pl: "półka" },
+      { id: 278, unit: "Unit 2", section: "Inside the house", en: "shower", pl: "prysznic" },
+      { id: 279, unit: "Unit 2", section: "Inside the house", en: "sideboard", pl: "kredens" },
+      { id: 280, unit: "Unit 2", section: "Inside the house", en: "sink", pl: "zlew" },
+      { id: 281, unit: "Unit 2", section: "Inside the house", en: "sofa", pl: "sofa, kanapa" },
+      { id: 282, unit: "Unit 2", section: "Inside the house", en: "spare bedroom", pl: "dodatkowa sypialnia, pokój dla gości" },
+      { id: 283, unit: "Unit 2", section: "Inside the house", en: "stool", pl: "stołek" },
+      { id: 284, unit: "Unit 2", section: "Inside the house", en: "toilet", pl: "toaleta" },
+      { id: 285, unit: "Unit 2", section: "Inside the house", en: "wardrobe", pl: "szafa" },
+      { id: 286, unit: "Unit 2", section: "Household appliances", en: "alarm clock", pl: "budzik" },
+      { id: 287, unit: "Unit 2", section: "Household appliances", en: "central heating", pl: "centralne ogrzewanie" },
+      { id: 288, unit: "Unit 2", section: "Household appliances", en: "cooker", pl: "kuchenka" },
+      { id: 289, unit: "Unit 2", section: "Household appliances", en: "DVD player", pl: "odtwarzacz DVD" },
+      { id: 290, unit: "Unit 2", section: "Household appliances", en: "freezer", pl: "zamrażarka" },
+      { id: 291, unit: "Unit 2", section: "Household appliances", en: "fridge", pl: "lodówka" },
+      { id: 292, unit: "Unit 2", section: "Household appliances", en: "heater", pl: "grzejnik" },
+      { id: 293, unit: "Unit 2", section: "Household appliances", en: "hairdryer", pl: "suszarka do włosów" },
+      { id: 294, unit: "Unit 2", section: "Household appliances", en: "iron", pl: "żelazko" },
+      { id: 295, unit: "Unit 2", section: "Household appliances", en: "kettle", pl: "czajnik" },
+      { id: 296, unit: "Unit 2", section: "Household appliances", en: "home cinema", pl: "kino domowe" },
+      { id: 297, unit: "Unit 2", section: "Household appliances", en: "microwave", pl: "kuchenka mikrofalowa" },
+      { id: 298, unit: "Unit 2", section: "Household appliances", en: "oven", pl: "piekarnik" },
+      { id: 299, unit: "Unit 2", section: "Household appliances", en: "sound system", pl: "nagłośnienie" },
+      { id: 2910, unit: "Unit 2", section: "Household appliances", en: "washing machine", pl: "pralka" },
+      { id: 2911, unit: "Unit 2", section: "Housework tasks", en: "clean the bathroom", pl: "sprzątać łazienkę" },
+      { id: 2912, unit: "Unit 2", section: "Housework tasks", en: "cook a meal", pl: "przygotowywać posiłek" },
+      { id: 2913, unit: "Unit 2", section: "Housework tasks", en: "do the ironing", pl: "prasować" },
+      { id: 2914, unit: "Unit 2", section: "Housework tasks", en: "do the washing", pl: "prać, robić pranie" },
+      { id: 2915, unit: "Unit 2", section: "Housework tasks", en: "help prepare a meal", pl: "pomagać przygotowywać posiłek" },
+      { id: 2916, unit: "Unit 2", section: "Housework tasks", en: "load the dishwasher", pl: "załadować zmywarkę" },
+      { id: 2917, unit: "Unit 2", section: "Housework tasks", en: "make your bed", pl: "ścielić łóżko" },
+      { id: 2918, unit: "Unit 2", section: "Housework tasks", en: "set the table", pl: "nakrywać do stołu" },
+      { id: 2919, unit: "Unit 2", section: "Housework tasks", en: "take the rubbish out", pl: "wynosić śmieci" },
+      { id: 2920, unit: "Unit 2", section: "Housework tasks", en: "tidy your room", pl: "sprzątać pokój" },
+      { id: 2921, unit: "Unit 2", section: "Housework tasks", en: "wash the dishes", pl: "zmywać naczynia" },
+      { id: 2922, unit: "Unit 2", section: "Housework tasks", en: "water the plants", pl: "podlewać rośliny" },
+      { id: 2923, unit: "Unit 2", section: "Reading", en: "furnish", pl: "meblować" },
+      { id: 2924, unit: "Unit 2", section: "Reading", en: "redecorate", pl: "zmienić wystrój" },
+      { id: 2925, unit: "Unit 2", section: "Reading", en: "renovate", pl: "odnowić, remontować" },
+      { id: 2926, unit: "Unit 2", section: "Reading", en: "rent", pl: "wynajmować" },
+      { id: 2927, unit: "Unit 2", section: "Reading", en: "sell", pl: "sprzedać" },
+      { id: 2928, unit: "Unit 2", section: "Reading", en: "share a room with", pl: "dzielić pokój z" },
+      { id: 2929, unit: "Unit 2", section: "Listening", en: "comfortable accommodation", pl: "wygodne zakwaterowanie" },
+      { id: 2930, unit: "Unit 2", section: "Listening", en: "fairy tale", pl: "bajka" },
+      { id: 2931, unit: "Unit 2", section: "Listening", en: "furniture shop", pl: "sklep meblowy" },
+      { id: 2932, unit: "Unit 2", section: "Listening", en: "gas bottle", pl: "butla gazowa" },
+      { id: 2933, unit: "Unit 2", section: "Listening", en: "huge area", pl: "wielki obszar (powierzchnia)" },
+      { id: 2934, unit: "Unit 2", section: "Listening", en: "phone signal", pl: "sygnał telefonu" },
+      { id: 2935, unit: "Unit 2", section: "Listening", en: "sleep in a tent", pl: "spać w namiocie" },
+      { id: 2936, unit: "Unit 2", section: "Listening", en: "solar lights", pl: "lampy solarne" },
+      { id: 2937, unit: "Unit 2", section: "Listening", en: "stay in a hotel", pl: "zatrzymać się w hotelu" },
+      { id: 2938, unit: "Unit 2", section: "Use of English", en: "bedroom door", pl: "drzwi do sypialni" },
+      { id: 2939, unit: "Unit 2", section: "Use of English", en: "bike lock", pl: "zapięcie rowerowe" },
+      { id: 2940, unit: "Unit 2", section: "Use of English", en: "car keys", pl: "klucze do samochodu" },
+      { id: 2941, unit: "Unit 2", section: "Use of English", en: "light switch", pl: "włącznik światła" },
+      { id: 2942, unit: "Unit 2", section: "Use of English", en: "picture frame", pl: "ramka obrazu" },
+      { id: 2943, unit: "Unit 2", section: "Use of English", en: "rubbish bin", pl: "kosz na śmieci" },
+      { id: 2944, unit: "Unit 2", section: "Use of English", en: "toy box", pl: "pudełko na zabawki" },
+
+      // --- UNIT 3 ---
+      { id: 301, unit: "Unit 3", section: "At school", en: "calculator", pl: "kalkulator" },
+      { id: 302, unit: "Unit 3", section: "At school", en: "eraser / rubber", pl: "gumka" },
+      { id: 303, unit: "Unit 3", section: "At school", en: "felt-tip pen", pl: "flamaster" },
+      { id: 304, unit: "Unit 3", section: "At school", en: "folder", pl: "teczka" },
+      { id: 305, unit: "Unit 3", section: "At school", en: "gel pen", pl: "długopis żelowy" },
+      { id: 306, unit: "Unit 3", section: "At school", en: "glue", pl: "klej" },
+      { id: 307, unit: "Unit 3", section: "At school", en: "highlighter", pl: "zakreślacz" },
+      { id: 308, unit: "Unit 3", section: "At school", en: "paper clip", pl: "spinacz" },
+      { id: 309, unit: "Unit 3", section: "At school", en: "pencil case", pl: "piórnik" },
+      { id: 310, unit: "Unit 3", section: "At school", en: "pencil sharpener", pl: "temperówka" },
+      { id: 311, unit: "Unit 3", section: "At school", en: "ruler", pl: "linijka" },
+      { id: 312, unit: "Unit 3", section: "At school", en: "(a pair of) scissors", pl: "nożyczki" },
+      { id: 313, unit: "Unit 3", section: "At school", en: "stapler", pl: "zszywacz" },
+      { id: 314, unit: "Unit 3", section: "At school", en: "tape", pl: "taśma klejąca" },
+      { id: 315, unit: "Unit 3", section: "Places at school", en: "cafeteria / canteen", pl: "stołówka" },
+      { id: 316, unit: "Unit 3", section: "Places at school", en: "corridor", pl: "korytarz" },
+      { id: 317, unit: "Unit 3", section: "Places at school", en: "gym", pl: "siłownia, sala gimnastyczna" },
+      { id: 318, unit: "Unit 3", section: "Places at school", en: "library", pl: "biblioteka" },
+      { id: 319, unit: "Unit 3", section: "Places at school", en: "playground", pl: "plac zabaw, boisko" },
+      { id: 320, unit: "Unit 3", section: "Places at school", en: "science lab", pl: "laboratorium" },
+      { id: 321, unit: "Unit 3", section: "School subjects", en: "art", pl: "plastyka" },
+      { id: 322, unit: "Unit 3", section: "School subjects", en: "biology", pl: "biologia" },
+      { id: 323, unit: "Unit 3", section: "School subjects", en: "chemistry", pl: "chemia" },
+      { id: 324, unit: "Unit 3", section: "School subjects", en: "citizenship", pl: "wiedza o społeczeństwie" },
+      { id: 325, unit: "Unit 3", section: "School subjects", en: "computing", pl: "informatyka" },
+      { id: 326, unit: "Unit 3", section: "School subjects", en: "design and technology", pl: "technika" },
+      { id: 327, unit: "Unit 3", section: "School subjects", en: "drama", pl: "zajęcia teatralne" },
+      { id: 328, unit: "Unit 3", section: "School subjects", en: "English", pl: "język angielski" },
+      { id: 329, unit: "Unit 3", section: "School subjects", en: "French", pl: "język francuski" },
+      { id: 330, unit: "Unit 3", section: "School subjects", en: "geography", pl: "geografia" },
+      { id: 331, unit: "Unit 3", section: "School subjects", en: "history", pl: "historia" },
+      { id: 332, unit: "Unit 3", section: "School subjects", en: "literature", pl: "literatura" },
+      { id: 333, unit: "Unit 3", section: "School subjects", en: "maths", pl: "matematyka" },
+      { id: 334, unit: "Unit 3", section: "School subjects", en: "modern foreign languages (MFL)", pl: "języki obce nowożytne" },
+      { id: 335, unit: "Unit 3", section: "School subjects", en: "music", pl: "muzyka" },
+      { id: 336, unit: "Unit 3", section: "School subjects", en: "physical education (PE)", pl: "wychowanie fizyczne" },
+      { id: 337, unit: "Unit 3", section: "School subjects", en: "physics", pl: "fizyka" },
+      { id: 338, unit: "Unit 3", section: "School subjects", en: "science", pl: "przyroda, przedmioty ścisłe" },
+      { id: 339, unit: "Unit 3", section: "School subjects", en: "timetable", pl: "plan lekcji" },
+      { id: 340, unit: "Unit 3", section: "Studying", en: "break", pl: "przerwa" },
+      { id: 341, unit: "Unit 3", section: "Studying", en: "certificate", pl: "świadectwo ukończenia kursu" },
+      { id: 342, unit: "Unit 3", section: "Studying", en: "classmate", pl: "kolega z klasy" },
+      { id: 343, unit: "Unit 3", section: "Studying", en: "course", pl: "kurs" },
+      { id: 344, unit: "Unit 3", section: "Studying", en: "do homework", pl: "odrabiać pracę domową" },
+      { id: 345, unit: "Unit 3", section: "Studying", en: "educate students", pl: "kształcić uczniów" },
+      { id: 346, unit: "Unit 3", section: "Studying", en: "essay writing", pl: "pisanie wypracowań" },
+      { id: 347, unit: "Unit 3", section: "Studying", en: "fail", pl: "nie zdać, oblać" },
+      { id: 348, unit: "Unit 3", section: "Studying", en: "form time", pl: "godzina wychowawcza" },
+      { id: 349, unit: "Unit 3", section: "Studying", en: "form tutor", pl: "wychowawca" },
+      { id: 350, unit: "Unit 3", section: "Studying", en: "handwriting", pl: "charakter pisma" },
+      { id: 351, unit: "Unit 3", section: "Studying", en: "homework assignments", pl: "zadania domowe" },
+      { id: 352, unit: "Unit 3", section: "Studying", en: "learn English / German", pl: "uczyć się języka angielskiego/niemieckiego" },
+      { id: 353, unit: "Unit 3", section: "Studying", en: "lesson", pl: "lekcja" },
+      { id: 354, unit: "Unit 3", section: "Studying", en: "mark", pl: "ocena" },
+      { id: 355, unit: "Unit 3", section: "Studying", en: "note taking", pl: "robić notatki" },
+      { id: 356, unit: "Unit 3", section: "Studying", en: "online research", pl: "poszukiwanie informacji w Internecie" },
+      { id: 357, unit: "Unit 3", section: "Studying", en: "pass", pl: "zdać" },
+      { id: 358, unit: "Unit 3", section: "Studying", en: "project", pl: "projekt" },
+      { id: 359, unit: "Unit 3", section: "Studying", en: "project work", pl: "praca nad projektem" },
+      { id: 360, unit: "Unit 3", section: "Studying", en: "pupil", pl: "uczeń" },
+      { id: 361, unit: "Unit 3", section: "Studying", en: "read", pl: "czytać" },
+      { id: 362, unit: "Unit 3", section: "Studying", en: "revise for an exam", pl: "powtarzać do egzaminu" },
+      { id: 363, unit: "Unit 3", section: "Studying", en: "speak in class", pl: "rozmawiać, dyskutować w klasie" },
+      { id: 364, unit: "Unit 3", section: "Studying", en: "study the Second World War", pl: "uczyć się o II wojnie światowej" },
+      { id: 365, unit: "Unit 3", section: "Studying", en: "succeed", pl: "osiągnąć sukces" },
+      { id: 366, unit: "Unit 3", section: "Studying", en: "take tests / exams", pl: "podejść do testów/egzaminów" },
+      { id: 367, unit: "Unit 3", section: "Studying", en: "teach", pl: "uczyć" },
+      { id: 368, unit: "Unit 3", section: "Studying", en: "term", pl: "semestr" },
+      { id: 369, unit: "Unit 3", section: "Studying", en: "test", pl: "test, sprawdzian" },
+      { id: 370, unit: "Unit 3", section: "Studying", en: "train", pl: "trenować" },
+      { id: 371, unit: "Unit 3", section: "Studying", en: "trainer", pl: "trener" },
+      { id: 372, unit: "Unit 3", section: "Studying", en: "using a dictionary", pl: "korzystać ze słownika" },
+      { id: 373, unit: "Unit 3", section: "Studying", en: "in Year 8", pl: "w klasie VIII" },
+      { id: 374, unit: "Unit 3", section: "Phrasal verbs", en: "catch up with", pl: "dogonić, nadrobić" },
+      { id: 375, unit: "Unit 3", section: "Phrasal verbs", en: "fall behind", pl: "odstawać, zostawać w tyle" },
+      { id: 376, unit: "Unit 3", section: "Phrasal verbs", en: "find out", pl: "dowiedzieć się" },
+      { id: 377, unit: "Unit 3", section: "Phrasal verbs", en: "hand in", pl: "oddać (coś), wręczyć" },
+      { id: 378, unit: "Unit 3", section: "Phrasal verbs", en: "note down", pl: "zanotować" },
+      { id: 379, unit: "Unit 3", section: "Reading", en: "assignment", pl: "zadanie" },
+      { id: 380, unit: "Unit 3", section: "Reading", en: "extra-curricular activities", pl: "zajęcia pozalekcyjne" },
+      { id: 381, unit: "Unit 3", section: "Reading", en: "leisure", pl: "odpoczynek, czas wolny" },
+      { id: 382, unit: "Unit 3", section: "Reading", en: "recreation", pl: "rekreacja, odpoczynek" },
+      { id: 383, unit: "Unit 3", section: "Reading", en: "relax", pl: "relaks" },
+      { id: 384, unit: "Unit 3", section: "Reading", en: "task", pl: "zadanie" },
+      { id: 385, unit: "Unit 3", section: "Reading", en: "arts and crafts", pl: "zajęcia plastyczne" },
+      { id: 386, unit: "Unit 3", section: "Reading", en: "chess club", pl: "szachy" },
+      { id: 387, unit: "Unit 3", section: "Reading", en: "computer games", pl: "gry komputerowe" },
+      { id: 388, unit: "Unit 3", section: "Reading", en: "cookery", pl: "gotowanie" },
+      { id: 389, unit: "Unit 3", section: "Reading", en: "dance class", pl: "taniec" },
+      { id: 390, unit: "Unit 3", section: "Reading", en: "football", pl: "piłka nożna" },
+      { id: 391, unit: "Unit 3", section: "Reading", en: "graphic design", pl: "grafika komputerowa" },
+      { id: 392, unit: "Unit 3", section: "Reading", en: "indoor wall climbing", pl: "wspinaczka na ściance" },
+      { id: 393, unit: "Unit 3", section: "Reading", en: "swim club", pl: "klub pływacki" },
+      { id: 394, unit: "Unit 3", section: "Listening", en: "clarinet", pl: "klarnet" },
+      { id: 395, unit: "Unit 3", section: "Listening", en: "drums", pl: "perkusja" },
+      { id: 396, unit: "Unit 3", section: "Listening", en: "flute", pl: "flet" },
+      { id: 397, unit: "Unit 3", section: "Listening", en: "guitar", pl: "gitara" },
+      { id: 398, unit: "Unit 3", section: "Listening", en: "piano", pl: "pianino" },
+      { id: 399, unit: "Unit 3", section: "Listening", en: "violin", pl: "skrzypce" },
+      { id: 3910, unit: "Unit 3", section: "Listening", en: "get ready", pl: "szykować się, przygotowywać się" },
+      { id: 3911, unit: "Unit 3", section: "Listening", en: "look ugly", pl: "wyglądać brzydko" },
+      { id: 3912, unit: "Unit 3", section: "Listening", en: "make money", pl: "zarabiać pieniądze" },
+      { id: 3913, unit: "Unit 3", section: "Listening", en: "make / take a decision", pl: "podejmij/podejmować decyzję" },
+      { id: 3914, unit: "Unit 3", section: "Listening", en: "spend money", pl: "wydawać pieniądze" },
+      { id: 3915, unit: "Unit 3", section: "Listening", en: "take an interest", pl: "zainteresować się (czymś)" },
+      { id: 3916, unit: "Unit 3", section: "Listening", en: "wear a school uniform", pl: "nosić mundurek szkolny" },
+      { id: 3917, unit: "Unit 3", section: "Use of English", en: "be ready for", pl: "być gotowym (na coś)" },
+      { id: 3918, unit: "Unit 3", section: "Use of English", en: "be upset about", pl: "być zmartwionym czymś" },
+      { id: 3919, unit: "Unit 3", section: "Use of English", en: "be / get bored with", pl: "być znudzonym czymś" },
+      { id: 3920, unit: "Unit 3", section: "Use of English", en: "belong to", pl: "należeć do" },
+      { id: 3921, unit: "Unit 3", section: "Use of English", en: "borrow from", pl: "pożyczać od" },
+      { id: 3922, unit: "Unit 3", section: "Use of English", en: "disagree with", pl: "nie zgadzać się z" },
+      { id: 3923, unit: "Unit 3", section: "Use of English", en: "prepare for", pl: "przygotowywać się do" },
+      { id: 3924, unit: "Unit 3", section: "Use of English", en: "revise for", pl: "powtarzać do (np. egzaminu)" },
+
+      // --- UNIT 4 ---
+      { id: 401, unit: "Unit 4", section: "Jobs", en: "accountant", pl: "księgowy/księgowa" },
+      { id: 402, unit: "Unit 4", section: "Jobs", en: "actor / actress", pl: "aktor/aktorka" },
+      { id: 403, unit: "Unit 4", section: "Jobs", en: "ambulance driver", pl: "kierowca karetki" },
+      { id: 404, unit: "Unit 4", section: "Jobs", en: "bank clerk", pl: "pracownik banku" },
+      { id: 405, unit: "Unit 4", section: "Jobs", en: "cameraman / woman", pl: "operator filmowy" },
+      { id: 406, unit: "Unit 4", section: "Jobs", en: "chef", pl: "szef kuchni" },
+      { id: 407, unit: "Unit 4", section: "Jobs", en: "computer programmer", pl: "programista" },
+      { id: 408, unit: "Unit 4", section: "Jobs", en: "cook", pl: "kucharz" },
+      { id: 409, unit: "Unit 4", section: "Jobs", en: "dentist", pl: "dentysta" },
+      { id: 410, unit: "Unit 4", section: "Jobs", en: "doctor", pl: "lekarz" },
+      { id: 411, unit: "Unit 4", section: "Jobs", en: "driving / skiing instructor", pl: "instruktor jazdy/narciarski" },
+      { id: 412, unit: "Unit 4", section: "Jobs", en: "emergency services", pl: "służby ratownicze" },
+      { id: 413, unit: "Unit 4", section: "Jobs", en: "engineer", pl: "inżynier" },
+      { id: 414, unit: "Unit 4", section: "Jobs", en: "entertainment & media", pl: "rozrywka i media" },
+      { id: 415, unit: "Unit 4", section: "Jobs", en: "factory worker", pl: "pracownik fabryki" },
+      { id: 416, unit: "Unit 4", section: "Jobs", en: "fireman / firefighter", pl: "strażak" },
+      { id: 417, unit: "Unit 4", section: "Jobs", en: "flight attendant", pl: "steward/stewardesa" },
+      { id: 418, unit: "Unit 4", section: "Jobs", en: "food & hospitality", pl: "sektor hotelarski i gastronomiczny" },
+      { id: 419, unit: "Unit 4", section: "Jobs", en: "hairdresser", pl: "fryzjer" },
+      { id: 420, unit: "Unit 4", section: "Jobs", en: "journalist", pl: "dziennikarz" },
+      { id: 421, unit: "Unit 4", section: "Jobs", en: "judge", pl: "sędzia" },
+      { id: 422, unit: "Unit 4", section: "Jobs", en: "law", pl: "prawo" },
+      { id: 423, unit: "Unit 4", section: "Jobs", en: "lawyer", pl: "prawnik" },
+      { id: 424, unit: "Unit 4", section: "Jobs", en: "lorry driver", pl: "kierowca ciężarówki" },
+      { id: 425, unit: "Unit 4", section: "Jobs", en: "manager", pl: "menadżer" },
+      { id: 426, unit: "Unit 4", section: "Jobs", en: "mechanic", pl: "mechanik" },
+      { id: 427, unit: "Unit 4", section: "Jobs", en: "model", pl: "model" },
+      { id: 428, unit: "Unit 4", section: "Jobs", en: "nurse", pl: "pielęgniarz" },
+      { id: 429, unit: "Unit 4", section: "Jobs", en: "paramedic", pl: "ratownik medyczny" },
+      { id: 430, unit: "Unit 4", section: "Jobs", en: "police officer", pl: "policjant" },
+      { id: 431, unit: "Unit 4", section: "Jobs", en: "professor", pl: "profesor" },
+      { id: 432, unit: "Unit 4", section: "Jobs", en: "sales rep (representative)", pl: "przedstawiciel handlowy" },
+      { id: 433, unit: "Unit 4", section: "Jobs", en: "scientist", pl: "naukowiec" },
+      { id: 434, unit: "Unit 4", section: "Jobs", en: "secretary", pl: "sekretarz" },
+      { id: 435, unit: "Unit 4", section: "Jobs", en: "shop assistant", pl: "sprzedawca w sklepie" },
+      { id: 436, unit: "Unit 4", section: "Jobs", en: "software designer", pl: "projektant oprogramowania" },
+      { id: 437, unit: "Unit 4", section: "Jobs", en: "taxi driver", pl: "taksówkarz" },
+      { id: 438, unit: "Unit 4", section: "Jobs", en: "teacher", pl: "nauczyciel" },
+      { id: 439, unit: "Unit 4", section: "Jobs", en: "technician", pl: "technik" },
+      { id: 440, unit: "Unit 4", section: "Jobs", en: "(the) service sector", pl: "sektor usług" },
+      { id: 441, unit: "Unit 4", section: "Jobs", en: "travel agent", pl: "agent biura podróży" },
+      { id: 442, unit: "Unit 4", section: "Jobs", en: "TV presenter", pl: "prezenter telewizyjny" },
+      { id: 443, unit: "Unit 4", section: "Jobs", en: "waiter / waitress", pl: "kelner / kelnerka" },
+      { id: 444, unit: "Unit 4", section: "Describing a job", en: "bank account", pl: "rachunek bankowy" },
+      { id: 445, unit: "Unit 4", section: "Describing a job", en: "boring", pl: "nudny" },
+      { id: 446, unit: "Unit 4", section: "Describing a job", en: "challenging", pl: "stanowiący wyzwanie, wymagający" },
+      { id: 447, unit: "Unit 4", section: "Describing a job", en: "dangerous", pl: "niebezpieczny" },
+      { id: 448, unit: "Unit 4", section: "Describing a job", en: "exciting", pl: "ekscytujący" },
+      { id: 449, unit: "Unit 4", section: "Describing a job", en: "have a lot of responsibility", pl: "mieć dużą odpowiedzialność" },
+      { id: 450, unit: "Unit 4", section: "Describing a job", en: "look after sb", pl: "opiekować się kimś" },
+      { id: 451, unit: "Unit 4", section: "Describing a job", en: "risky", pl: "ryzykowny" },
+      { id: 452, unit: "Unit 4", section: "Describing a job", en: "satisfying", pl: "satysfakcjonujący" },
+      { id: 453, unit: "Unit 4", section: "Describing a job", en: "serve customers", pl: "obsługiwać klientów" },
+      { id: 454, unit: "Unit 4", section: "Describing a job", en: "stimulating", pl: "stymulujący, motywujący" },
+      { id: 455, unit: "Unit 4", section: "Describing a job", en: "well-paid / poorly-paid", pl: "dobrze płatny / źle płatny" },
+      { id: 456, unit: "Unit 4", section: "Describing a job", en: "work indoors / outdoors", pl: "pracować w pomieszczeniu / na zewnątrz" },
+      { id: 457, unit: "Unit 4", section: "Choosing a profession", en: "apply for a job", pl: "ubiegać się o pracę" },
+      { id: 458, unit: "Unit 4", section: "Choosing a profession", en: "be unemployed", pl: "być bezrobotnym" },
+      { id: 459, unit: "Unit 4", section: "Choosing a profession", en: "be well paid", pl: "być dobrze opłacanym" },
+      { id: 460, unit: "Unit 4", section: "Choosing a profession", en: "be / get promoted", pl: "awansować" },
+      { id: 461, unit: "Unit 4", section: "Choosing a profession", en: "colleagues", pl: "koledzy z pracy, współpracownicy" },
+      { id: 462, unit: "Unit 4", section: "Choosing a profession", en: "(good) communication skills", pl: "(dobre) umiejętności komunikacyjne" },
+      { id: 463, unit: "Unit 4", section: "Choosing a profession", en: "commute", pl: "dojeżdżać do pracy" },
+      { id: 464, unit: "Unit 4", section: "Choosing a profession", en: "earn money / a salary", pl: "zarabiać pieniądze / otrzymywać pensję" },
+      { id: 465, unit: "Unit 4", section: "Choosing a profession", en: "find work", pl: "znaleźć pracę" },
+      { id: 466, unit: "Unit 4", section: "Choosing a profession", en: "leader", pl: "lider, przywódca" },
+      { id: 467, unit: "Unit 4", section: "Choosing a profession", en: "personal qualities", pl: "cechy osobiste" },
+      { id: 468, unit: "Unit 4", section: "Choosing a profession", en: "reliable", pl: "niezawodny, solidny" },
+      { id: 469, unit: "Unit 4", section: "Choosing a profession", en: "strengths", pl: "mocne strony" },
+      { id: 470, unit: "Unit 4", section: "Choosing a profession", en: "stressful", pl: "stresujący" },
+      { id: 471, unit: "Unit 4", section: "Choosing a profession", en: "work abroad", pl: "pracować za granicą" },
+      { id: 472, unit: "Unit 4", section: "Choosing a profession", en: "work experience", pl: "doświadczenie zawodowe" },
+      { id: 473, unit: "Unit 4", section: "Choosing a profession", en: "work full-time / part-time", pl: "pracować w pełnym / w niepełnym wymiarze" },
+      { id: 474, unit: "Unit 4", section: "Choosing a profession", en: "work overtime", pl: "pracować w nadgodzinach / po godzinach" },
+      { id: 475, unit: "Unit 4", section: "Choosing a profession", en: "working hours", pl: "godziny pracy" },
+      { id: 476, unit: "Unit 4", section: "Reading", en: "babysitting", pl: "opieka nad dzieckiem" },
+      { id: 477, unit: "Unit 4", section: "Reading", en: "car washing", pl: "mycie samochodu" },
+      { id: 478, unit: "Unit 4", section: "Reading", en: "dog walking", pl: "wyprowadzanie psa" },
+      { id: 479, unit: "Unit 4", section: "Reading", en: "gift wrapping", pl: "pakowanie prezentów" },
+      { id: 480, unit: "Unit 4", section: "Reading", en: "grocery bagging", pl: "pakowanie zakupów przy kasie" },
+      { id: 481, unit: "Unit 4", section: "Reading", en: "hand out leaflets", pl: "rozdawać ulotki" },
+      { id: 482, unit: "Unit 4", section: "Reading", en: "newspapers delivery", pl: "roznoszenie prasy" },
+      { id: 483, unit: "Unit 4", section: "Reading", en: "pet grooming", pl: "czesanie zwierzęcia" },
+      { id: 484, unit: "Unit 4", section: "Reading", en: "pet sitting", pl: "opiekowanie się zwierzęciem w czasie nieobecności właściciela" },
+      { id: 485, unit: "Unit 4", section: "Listening", en: "be responsible with money", pl: "umieć gospodarować pieniędzmi" },
+      { id: 486, unit: "Unit 4", section: "Listening", en: "hang out with", pl: "spędzać czas z (kimś)" },
+      { id: 487, unit: "Unit 4", section: "Listening", en: "have strong views (on)", pl: "mieć zdecydowane poglądy (na temat)" },
+      { id: 488, unit: "Unit 4", section: "Listening", en: "organise your time", pl: "organizować swój czas" },
+      { id: 489, unit: "Unit 4", section: "Use of English", en: "do a job", pl: "wykonywać pracę" },
+      { id: 490, unit: "Unit 4", section: "Use of English", en: "have / get the chance (to do)", pl: "mieć/otrzymać szansę zrobienia (czegoś)" },
+      { id: 491, unit: "Unit 4", section: "Use of English", en: "mystery shopper", pl: "tajemniczy klient" },
+      { id: 492, unit: "Unit 4", section: "Writing", en: "amazed / amazing", pl: "zdumiony / zdumiewający" },
+      { id: 493, unit: "Unit 4", section: "Writing", en: "bored / boring", pl: "znudzony / nudny" },
+      { id: 494, unit: "Unit 4", section: "Writing", en: "challenged / challenging", pl: "w obliczu wyzwania / stanowiący wyzwanie" },
+      { id: 495, unit: "Unit 4", section: "Writing", en: "disappointed / disappointing", pl: "rozczarowany / rozczarowujący" },
+      { id: 496, unit: "Unit 4", section: "Writing", en: "excited / exciting", pl: "podekscytowany / ekscytujący" },
+      { id: 497, unit: "Unit 4", section: "Writing", en: "exhausted / exhausting", pl: "wyczerpany / wyczerpujący" },
+      { id: 498, unit: "Unit 4", section: "Writing", en: "pleased / pleasing", pl: "zadowolony / przyjemny" },
+      { id: 499, unit: "Unit 4", section: "Writing", en: "tired / tiring", pl: "zmęczony / męczący" },
+
+      // --- UNIT 5 ---
+      { id: 501, unit: "Unit 5", section: "Family members", en: "brother", pl: "brat" },
+      { id: 502, unit: "Unit 5", section: "Family members", en: "brother-in-law", pl: "szwagier" },
+      { id: 503, unit: "Unit 5", section: "Family members", en: "cousin", pl: "kuzyn" },
+      { id: 504, unit: "Unit 5", section: "Family members", en: "daughter", pl: "córka" },
+      { id: 505, unit: "Unit 5", section: "Family members", en: "father", pl: "ojciec, tata" },
+      { id: 506, unit: "Unit 5", section: "Family members", en: "father-in-law", pl: "teść" },
+      { id: 507, unit: "Unit 5", section: "Family members", en: "grandchildren", pl: "wnuki" },
+      { id: 508, unit: "Unit 5", section: "Family members", en: "granddaughter", pl: "wnuczka" },
+      { id: 509, unit: "Unit 5", section: "Family members", en: "grandfather", pl: "dziadek" },
+      { id: 510, unit: "Unit 5", section: "Family members", en: "grandmother", pl: "babcia" },
+      { id: 511, unit: "Unit 5", section: "Family members", en: "grandparents", pl: "dziadkowie" },
+      { id: 512, unit: "Unit 5", section: "Family members", en: "grandson", pl: "wnuk" },
+      { id: 513, unit: "Unit 5", section: "Family members", en: "great-grandfather", pl: "pradziadek" },
+      { id: 514, unit: "Unit 5", section: "Family members", en: "great-grandmother", pl: "prababcia" },
+      { id: 515, unit: "Unit 5", section: "Family members", en: "half-sister / brother", pl: "siostra przyrodnia/brat przyrodni" },
+      { id: 516, unit: "Unit 5", section: "Family members", en: "husband", pl: "mąż" },
+      { id: 517, unit: "Unit 5", section: "Family members", en: "mother", pl: "matka, mama" },
+      { id: 518, unit: "Unit 5", section: "Family members", en: "mother-in-law", pl: "teściowa" },
+      { id: 519, unit: "Unit 5", section: "Family members", en: "nephew", pl: "bratanek, siostrzeniec" },
+      { id: 520, unit: "Unit 5", section: "Family members", en: "niece", pl: "bratanica, siostrzenica" },
+      { id: 521, unit: "Unit 5", section: "Family members", en: "parents", pl: "rodzice" },
+      { id: 522, unit: "Unit 5", section: "Family members", en: "sister", pl: "siostra" },
+      { id: 523, unit: "Unit 5", section: "Family members", en: "sister-in-law", pl: "szwagierka, bratowa" },
+      { id: 524, unit: "Unit 5", section: "Family members", en: "son", pl: "syn" },
+      { id: 525, unit: "Unit 5", section: "Family members", en: "step-mother / step-father", pl: "macocha/ojczym" },
+      { id: 526, unit: "Unit 5", section: "Family members", en: "step-sister / step-brother", pl: "siostra przyrodnia/brat przyrodni" },
+      { id: 527, unit: "Unit 5", section: "Family members", en: "wife", pl: "żona" },
+      { id: 528, unit: "Unit 5", section: "Other family words", en: "adopted", pl: "adoptowany" },
+      { id: 529, unit: "Unit 5", section: "Other family words", en: "divorced", pl: "rozwiedziony" },
+      { id: 530, unit: "Unit 5", section: "Other family words", en: "marriage", pl: "małżeństwo" },
+      { id: 531, unit: "Unit 5", section: "Other family words", en: "wedding", pl: "ślub" },
+      { id: 532, unit: "Unit 5", section: "Friends and acquaintances", en: "acquaintance", pl: "znajomy" },
+      { id: 533, unit: "Unit 5", section: "Friends and acquaintances", en: "best friend / mate", pl: "najlepszy przyjaciel/kolega, kumpel" },
+      { id: 534, unit: "Unit 5", section: "Friends and acquaintances", en: "boyfriend / girlfriend", pl: "chłopak / dziewczyna" },
+      { id: 535, unit: "Unit 5", section: "Friends and acquaintances", en: "classmate", pl: "kolega z klasy" },
+      { id: 536, unit: "Unit 5", section: "Friends and acquaintances", en: "colleague", pl: "kolega z pracy, współpracownik" },
+      { id: 537, unit: "Unit 5", section: "Friends and acquaintances", en: "fiancé / fiancée", pl: "narzeczony/narzeczona" },
+      { id: 538, unit: "Unit 5", section: "Friends and acquaintances", en: "flatmate / housemate", pl: "współlokator" },
+      { id: 539, unit: "Unit 5", section: "Friends and acquaintances", en: "neighbour", pl: "sąsiad" },
+      { id: 540, unit: "Unit 5", section: "Conflicts and problems", en: "apologise", pl: "przepraszać" },
+      { id: 541, unit: "Unit 5", section: "Conflicts and problems", en: "forgive", pl: "wybaczać" },
+      { id: 542, unit: "Unit 5", section: "Conflicts and problems", en: "happen", pl: "zdarzyć się" },
+      { id: 543, unit: "Unit 5", section: "Conflicts and problems", en: "hurt someone's feelings", pl: "ranić czyjeś uczucia" },
+      { id: 544, unit: "Unit 5", section: "Conflicts and problems", en: "make it up to someone", pl: "wynagrodzić coś komuś" },
+      { id: 545, unit: "Unit 5", section: "Conflicts and problems", en: "not mind", pl: "nie przejmować się (czymś)" },
+      { id: 546, unit: "Unit 5", section: "Conflicts and problems", en: "not mean it", pl: "nie zamierzać (czegoś)" },
+      { id: 547, unit: "Unit 5", section: "Conflicts and problems", en: "problem", pl: "problem, kłopot" },
+      { id: 548, unit: "Unit 5", section: "Daily routines", en: "brush hair / teeth", pl: "szczotkować włosy/myć zęby" },
+      { id: 549, unit: "Unit 5", section: "Daily routines", en: "catch the bus", pl: "złapać, zdążyć na autobus" },
+      { id: 550, unit: "Unit 5", section: "Daily routines", en: "feed the dog", pl: "karmić psa" },
+      { id: 551, unit: "Unit 5", section: "Daily routines", en: "get dressed", pl: "ubierać się" },
+      { id: 552, unit: "Unit 5", section: "Daily routines", en: "go to work", pl: "iść do pracy" },
+      { id: 553, unit: "Unit 5", section: "Daily routines", en: "have breakfast", pl: "jeść śniadanie" },
+      { id: 554, unit: "Unit 5", section: "Daily routines", en: "have / take a shower", pl: "brać/wziąć prysznic" },
+      { id: 555, unit: "Unit 5", section: "Daily routines", en: "leave the house", pl: "wyjść z domu" },
+      { id: 556, unit: "Unit 5", section: "Daily routines", en: "ring", pl: "dzwonić" },
+      { id: 557, unit: "Unit 5", section: "Daily routines", en: "take the dog for a walk", pl: "zabrać psa na spacer" },
+      { id: 558, unit: "Unit 5", section: "Daily routines", en: "take a bus", pl: "pojechać autobusem" },
+      { id: 559, unit: "Unit 5", section: "Daily routines", en: "wake up", pl: "obudzić się" },
+      { id: 560, unit: "Unit 5", section: "Daily routines", en: "wash your hands / face", pl: "myć ręce/twarz" },
+      { id: 561, unit: "Unit 5", section: "Spending free time", en: "check social media", pl: "korzystać z mediów społecznościowych" },
+      { id: 562, unit: "Unit 5", section: "Spending free time", en: "listen to music", pl: "słuchać muzyki" },
+      { id: 563, unit: "Unit 5", section: "Spending free time", en: "play video games", pl: "grać w gry wideo" },
+      { id: 564, unit: "Unit 5", section: "Spending free time", en: "read", pl: "czytać" },
+      { id: 565, unit: "Unit 5", section: "Spending free time", en: "skateboarding", pl: "jazda na deskorolce" },
+      { id: 566, unit: "Unit 5", section: "Spending free time", en: "watch TV", pl: "oglądać telewizję" },
+      { id: 567, unit: "Unit 5", section: "Free time activities", en: "I enjoy / like / love ...", pl: "Lubię/Uwielbiam..." },
+      { id: 568, unit: "Unit 5", section: "Free time activities", en: "I'm a big fan of ...", pl: "Jestem wielkim fanem/wielką fanką..." },
+      { id: 569, unit: "Unit 5", section: "Free time activities", en: "I'm interested in ...", pl: "Interesuję się..." },
+      { id: 570, unit: "Unit 5", section: "Free time activities", en: "I'm into ...", pl: "Pasjonuję się..." },
+      { id: 571, unit: "Unit 5", section: "Free time activities", en: "I'm keen on ...", pl: "Uwielbiam..." },
+      { id: 572, unit: "Unit 5", section: "Free time activities", en: "My favourite thing is ...", pl: "Moim ulubionym zajęciem jest..." },
+      { id: 573, unit: "Unit 5", section: "Free time activities", en: "My hobbies are ...", pl: "Moje hobby to..." },
+      { id: 574, unit: "Unit 5", section: "Holidays and celebrations", en: "Boxing Day", pl: "drugi dzień świąt Bożego Narodzenia" },
+      { id: 575, unit: "Unit 5", section: "Holidays and celebrations", en: "Carnival", pl: "karnawał" },
+      { id: 576, unit: "Unit 5", section: "Holidays and celebrations", en: "Constitution Day", pl: "Święto Konstytucji" },
+      { id: 577, unit: "Unit 5", section: "Holidays and celebrations", en: "Good Friday", pl: "Wielki Piątek" },
+      { id: 578, unit: "Unit 5", section: "Holidays and celebrations", en: "Halloween", pl: "Halloween" },
+      { id: 579, unit: "Unit 5", section: "Holidays and celebrations", en: "Mother's Day", pl: "Dzień Matki" },
+      { id: 580, unit: "Unit 5", section: "Holidays and celebrations", en: "(Saint) Valentine's Day", pl: "Walentynki, Dzień Świętego Walentego" },
+      { id: 581, unit: "Unit 5", section: "Holidays descriptions", en: "celebrate", pl: "obchodzić" },
+      { id: 582, unit: "Unit 5", section: "Holidays descriptions", en: "dress up", pl: "przebierać się" },
+      { id: 583, unit: "Unit 5", section: "Holidays descriptions", en: "eat cake / special dishes", pl: "jeść ciasto/specjalne dania" },
+      { id: 584, unit: "Unit 5", section: "Holidays descriptions", en: "give a speech", pl: "wygłosić przemowę" },
+      { id: 585, unit: "Unit 5", section: "Holidays descriptions", en: "give cards / presents", pl: "dawać karty/prezenty" },
+      { id: 586, unit: "Unit 5", section: "Holidays descriptions", en: "go to church", pl: "iść do kościoła" },
+      { id: 587, unit: "Unit 5", section: "Holidays descriptions", en: "have a family dinner", pl: "jeść obiad z rodziną" },
+      { id: 588, unit: "Unit 5", section: "Holidays descriptions", en: "have a parade", pl: "uczestniczyć w paradzie" },
+      { id: 589, unit: "Unit 5", section: "Holidays descriptions", en: "wear costumes / masks", pl: "nosić przebrania/maski" },
+      { id: 590, unit: "Unit 5", section: "Time", en: "What time is it?", pl: "Która jest godzina?" },
+      { id: 591, unit: "Unit 5", section: "Time", en: "What's the time?", pl: "Która godzina?" },
+      { id: 592, unit: "Unit 5", section: "Time", en: "Do you have the time?", pl: "Czy masz zegarek?" },
+      { id: 593, unit: "Unit 5", section: "Time", en: "Have you got the time?", pl: "Czy masz zegarek?" },
+      { id: 594, unit: "Unit 5", section: "Time", en: "It's exactly ...", pl: "Jest dokładnie..." },
+      { id: 595, unit: "Unit 5", section: "Time", en: "It's five / twenty / half past seven.", pl: "Jest pięć po / dwadzieścia po / wpół do ósmej." },
+      { id: 596, unit: "Unit 5", section: "Time", en: "It's ten / quarter / twenty-five to three.", pl: "Jest za dziesięć / kwadrans / dwadzieścia pięć trzecia." },
+      { id: 597, unit: "Unit 5", section: "Time", en: "It's five fifteen / ten thirty / eleven o'clock.", pl: "Jest godzina 17:15 / 10:30 / 11:00." },
+      { id: 598, unit: "Unit 5", section: "Time", en: "It's one am / three pm.", pl: "Jest pierwsza w nocy / trzecia po południu." },
+      { id: 599, unit: "Unit 5", section: "Time", en: "It's midnight.", pl: "Jest północ." },
+      { id: 5910, unit: "Unit 5", section: "Time", en: "It's noon / midday.", pl: "Jest południe." },
+      { id: 5911, unit: "Unit 5", section: "Time", en: "It's three in the morning / afternoon / evening.", pl: "Jest trzecia rano / po południu / w nocy." },
+      { id: 5912, unit: "Unit 5", section: "Time", en: "It's almost / nearly / about ...", pl: "Jest prawie..." },
+      { id: 5913, unit: "Unit 5", section: "Reading", en: "annual", pl: "coroczny" },
+      { id: 5914, unit: "Unit 5", section: "Reading", en: "buffet", pl: "szwedzki stół" },
+      { id: 5915, unit: "Unit 5", section: "Reading", en: "get together", pl: "spotkać się" },
+      { id: 5916, unit: "Unit 5", section: "Reading", en: "sale", pl: "wyprzedaż" },
+      { id: 5917, unit: "Unit 5", section: "Reading", en: "stylish", pl: "stylowy" },
+      { id: 5918, unit: "Unit 5", section: "Listening", en: "book", pl: "rezerwować" },
+      { id: 5919, unit: "Unit 5", section: "Listening", en: "chilly", pl: "chłodny" },
+      { id: 5920, unit: "Unit 5", section: "Listening", en: "get ready", pl: "przygotowywać się" },
+      { id: 5921, unit: "Unit 5", section: "Listening", en: "guess", pl: "zgadywać" },
+      { id: 5922, unit: "Unit 5", section: "Listening", en: "pick someone up", pl: "odebrać kogoś" },
+
+      // --- UNIT 6 ---
+      { id: 601, unit: "Unit 6", section: "Food products", en: "beef", pl: "wołowina" },
+      { id: 602, unit: "Unit 6", section: "Food products", en: "biscuits", pl: "herbatniki, kruche ciastka" },
+      { id: 603, unit: "Unit 6", section: "Food products", en: "bread", pl: "chleb" },
+      { id: 604, unit: "Unit 6", section: "Food products", en: "broccoli", pl: "brokuł, brokuły" },
+      { id: 605, unit: "Unit 6", section: "Food products", en: "cabbage", pl: "kapusta" },
+      { id: 606, unit: "Unit 6", section: "Food products", en: "cakes", pl: "ciastka" },
+      { id: 607, unit: "Unit 6", section: "Food products", en: "cheese", pl: "ser" },
+      { id: 608, unit: "Unit 6", section: "Food products", en: "chicken", pl: "kurczak" },
+      { id: 609, unit: "Unit 6", section: "Food products", en: "chocolate bar", pl: "tabliczka czekolady" },
+      { id: 610, unit: "Unit 6", section: "Food products", en: "coffee", pl: "kawa" },
+      { id: 611, unit: "Unit 6", section: "Food products", en: "cola", pl: "cola" },
+      { id: 612, unit: "Unit 6", section: "Food products", en: "crisps", pl: "chipsy" },
+      { id: 613, unit: "Unit 6", section: "Food products", en: "cucumber", pl: "ogórek" },
+      { id: 614, unit: "Unit 6", section: "Food products", en: "dairy products", pl: "nabiał" },
+      { id: 615, unit: "Unit 6", section: "Food products", en: "drinks", pl: "napoje" },
+      { id: 616, unit: "Unit 6", section: "Food products", en: "fish", pl: "ryba" },
+      { id: 617, unit: "Unit 6", section: "Food products", en: "fruit", pl: "owoc" },
+      { id: 618, unit: "Unit 6", section: "Food products", en: "grapes", pl: "winogrona" },
+      { id: 619, unit: "Unit 6", section: "Food products", en: "green / red pepper", pl: "zielona/czerwona papryka" },
+      { id: 620, unit: "Unit 6", section: "Food products", en: "ham", pl: "szynka" },
+      { id: 621, unit: "Unit 6", section: "Food products", en: "juice", pl: "sok" },
+      { id: 622, unit: "Unit 6", section: "Food products", en: "lettuce", pl: "sałata" },
+      { id: 623, unit: "Unit 6", section: "Food products", en: "milk", pl: "mleko" },
+      { id: 624, unit: "Unit 6", section: "Food products", en: "mushrooms", pl: "grzyby" },
+      { id: 625, unit: "Unit 6", section: "Food products", en: "nuts", pl: "orzechy" },
+      { id: 626, unit: "Unit 6", section: "Food products", en: "oil", pl: "olej/oliwa" },
+      { id: 627, unit: "Unit 6", section: "Food products", en: "onion", pl: "cebula" },
+      { id: 628, unit: "Unit 6", section: "Food products", en: "pasta", pl: "makaron" },
+      { id: 629, unit: "Unit 6", section: "Food products", en: "pork", pl: "wieprzowina" },
+      { id: 630, unit: "Unit 6", section: "Food products", en: "potato", pl: "ziemniak" },
+      { id: 631, unit: "Unit 6", section: "Food products", en: "rice", pl: "ryż" },
+      { id: 632, unit: "Unit 6", section: "Food products", en: "roll", pl: "bułka" },
+      { id: 633, unit: "Unit 6", section: "Food products", en: "salmon", pl: "łosoś" },
+      { id: 634, unit: "Unit 6", section: "Food products", en: "salt", pl: "sól" },
+      { id: 635, unit: "Unit 6", section: "Food products", en: "sandwich", pl: "kanapka" },
+      { id: 636, unit: "Unit 6", section: "Food products", en: "sausage", pl: "kiełbasa" },
+      { id: 637, unit: "Unit 6", section: "Food products", en: "seafood", pl: "owoce morza" },
+      { id: 638, unit: "Unit 6", section: "Food products", en: "snacks", pl: "przekąski" },
+      { id: 639, unit: "Unit 6", section: "Food products", en: "spices", pl: "przyprawy" },
+      { id: 640, unit: "Unit 6", section: "Food products", en: "spinach", pl: "szpinak" },
+      { id: 641, unit: "Unit 6", section: "Food products", en: "strawberry", pl: "truskawka" },
+      { id: 642, unit: "Unit 6", section: "Food products", en: "sweets", pl: "słodycze" },
+      { id: 643, unit: "Unit 6", section: "Food products", en: "tea", pl: "herbata" },
+      { id: 644, unit: "Unit 6", section: "Food products", en: "tomato", pl: "pomidor" },
+      { id: 645, unit: "Unit 6", section: "Food products", en: "tuna", pl: "tuńczyk" },
+      { id: 646, unit: "Unit 6", section: "Food products", en: "turkey", pl: "indyk" },
+      { id: 647, unit: "Unit 6", section: "Food products", en: "vegetable", pl: "warzywo" },
+      { id: 648, unit: "Unit 6", section: "Food products", en: "yoghurt", pl: "jogurt" },
+      { id: 649, unit: "Unit 6", section: "Preparing and cooking food", en: "(chopping) board", pl: "deska do krojenia" },
+      { id: 650, unit: "Unit 6", section: "Preparing and cooking food", en: "bowl", pl: "miska, salaterka" },
+      { id: 651, unit: "Unit 6", section: "Preparing and cooking food", en: "can", pl: "puszka" },
+      { id: 652, unit: "Unit 6", section: "Preparing and cooking food", en: "cup", pl: "filiżanka" },
+      { id: 653, unit: "Unit 6", section: "Preparing and cooking food", en: "fork", pl: "widelec" },
+      { id: 654, unit: "Unit 6", section: "Preparing and cooking food", en: "frying pan", pl: "patelnia" },
+      { id: 655, unit: "Unit 6", section: "Preparing and cooking food", en: "knife", pl: "nóż" },
+      { id: 656, unit: "Unit 6", section: "Preparing and cooking food", en: "pan / pot", pl: "garnek/rondel" },
+      { id: 657, unit: "Unit 6", section: "Preparing and cooking food", en: "plate", pl: "talerz" },
+      { id: 658, unit: "Unit 6", section: "Preparing and cooking food", en: "tin opener", pl: "otwieracz do konserw" },
+      { id: 659, unit: "Unit 6", section: "Preparing and cooking food", en: "add", pl: "dodawać" },
+      { id: 660, unit: "Unit 6", section: "Preparing and cooking food", en: "cut", pl: "kroić" },
+      { id: 661, unit: "Unit 6", section: "Preparing and cooking food", en: "fry", pl: "smażyć" },
+      { id: 662, unit: "Unit 6", section: "Preparing and cooking food", en: "grill", pl: "grillować" },
+      { id: 663, unit: "Unit 6", section: "Preparing and cooking food", en: "heat up", pl: "podgrzewać" },
+      { id: 664, unit: "Unit 6", section: "Preparing and cooking food", en: "peel", pl: "obierać" },
+      { id: 665, unit: "Unit 6", section: "Preparing and cooking food", en: "recipe", pl: "przepis" },
+      { id: 666, unit: "Unit 6", section: "Preparing and cooking food", en: "slice", pl: "ciąć na plastry" },
+      { id: 667, unit: "Unit 6", section: "Preparing and cooking food", en: "spread", pl: "smarować" },
+      { id: 668, unit: "Unit 6", section: "Describing taste", en: "bitter", pl: "gorzki" },
+      { id: 669, unit: "Unit 6", section: "Describing taste", en: "salty", pl: "słony" },
+      { id: 670, unit: "Unit 6", section: "Describing taste", en: "savoury", pl: "słony (wytrawny)" },
+      { id: 671, unit: "Unit 6", section: "Describing taste", en: "sour", pl: "kwaśny" },
+      { id: 672, unit: "Unit 6", section: "Describing taste", en: "spicy", pl: "pikantny" },
+      { id: 673, unit: "Unit 6", section: "Describing taste", en: "sweet", pl: "słodki" },
+      { id: 674, unit: "Unit 6", section: "Eating out", en: "be ready to order", pl: "być gotowym do złożenia zamówienia" },
+      { id: 675, unit: "Unit 6", section: "Eating out", en: "book a table", pl: "rezerwować stolik" },
+      { id: 676, unit: "Unit 6", section: "Eating out", en: "(school) canteen", pl: "(szkolna) stołówka" },
+      { id: 677, unit: "Unit 6", section: "Eating out", en: "chef", pl: "szef kuchni" },
+      { id: 678, unit: "Unit 6", section: "Eating out", en: "customer", pl: "klient" },
+      { id: 679, unit: "Unit 6", section: "Eating out", en: "enjoy the meal", pl: "smacznego" },
+      { id: 680, unit: "Unit 6", section: "Eating out", en: "enter the restaurant and sit down", pl: "wejść do restauracji i usiąść" },
+      { id: 681, unit: "Unit 6", section: "Eating out", en: "leave a tip", pl: "zostawić napiwek" },
+      { id: 682, unit: "Unit 6", section: "Eating out", en: "look at the menu", pl: "przeglądać menu" },
+      { id: 683, unit: "Unit 6", section: "Eating out", en: "manager", pl: "menadżer" },
+      { id: 684, unit: "Unit 6", section: "Eating out", en: "order a meal", pl: "zamówić posiłek" },
+      { id: 685, unit: "Unit 6", section: "Eating out", en: "order dessert", pl: "zamówić deser" },
+      { id: 686, unit: "Unit 6", section: "Eating out", en: "pay the bill", pl: "zapłacić rachunek" },
+      { id: 687, unit: "Unit 6", section: "Eating out", en: "read a restaurant review", pl: "przeczytać recenzję restauracji" },
+      { id: 688, unit: "Unit 6", section: "Eating out", en: "sandwich bar", pl: "bar kanapkowy" },
+      { id: 689, unit: "Unit 6", section: "Eating out", en: "special(s)", pl: "specjalności kuchni" },
+      { id: 690, unit: "Unit 6", section: "Eating out", en: "table for two", pl: "stolik dla dwóch osób" },
+      { id: 691, unit: "Unit 6", section: "Eating out", en: "vegan", pl: "wegański" },
+      { id: 692, unit: "Unit 6", section: "Eating out", en: "vegetarian", pl: "wegetariański" },
+      { id: 693, unit: "Unit 6", section: "Eating out", en: "waiter / waitress", pl: "kelner / kelnerka" },
+      { id: 694, unit: "Unit 6", section: "Eating habits and parties", en: "banquet", pl: "bankiet, przyjęcie" },
+      { id: 695, unit: "Unit 6", section: "Eating habits and parties", en: "barbecue", pl: "grill, przyjęcie w ogrodzie" },
+      { id: 696, unit: "Unit 6", section: "Eating habits and parties", en: "eat out", pl: "jeść poza domem" },
+      { id: 697, unit: "Unit 6", section: "Eating habits and parties", en: "entertain guests", pl: "podejmować, przyjmować gości" },
+      { id: 698, unit: "Unit 6", section: "Eating habits and parties", en: "picnic", pl: "piknik" },
+      { id: 699, unit: "Unit 6", section: "Eating habits and parties", en: "snack (between meals)", pl: "jeść pomiędzy posiłkami, przekąsić" },
+      { id: 6910, unit: "Unit 6", section: "Reading", en: "abroad", pl: "za granicą" },
+      { id: 6911, unit: "Unit 6", section: "Reading", en: "assistant chef", pl: "pomocnik szefa kuchni" },
+      { id: 6912, unit: "Unit 6", section: "Reading", en: "cooking technique", pl: "technika gotowania" },
+      { id: 6913, unit: "Unit 6", section: "Reading", en: "culinary award", pl: "nagroda kulinarna" },
+      { id: 6914, unit: "Unit 6", section: "Reading", en: "delightful", pl: "wspaniały, zachwycający" },
+      { id: 6915, unit: "Unit 6", section: "Reading", en: "dishwasher", pl: "zmywarka" },
+      { id: 6916, unit: "Unit 6", section: "Reading", en: "hand down", pl: "przekazywać (komuś młodszemu)" },
+      { id: 6917, unit: "Unit 6", section: "Reading", en: "owner", pl: "właściciel" },
+      { id: 6918, unit: "Unit 6", section: "Reading", en: "pay off", pl: "opłacać się" },
+      { id: 6919, unit: "Unit 6", section: "Listening", en: "be ready to eat", pl: "być gotowym do jedzenia" },
+      { id: 6920, unit: "Unit 6", section: "Listening", en: "fill your basket", pl: "napełnić koszyk" },
+      { id: 6921, unit: "Unit 6", section: "Listening", en: "go out to eat", pl: "wyjść zjeść coś poza domem" },
+      { id: 6922, unit: "Unit 6", section: "Listening", en: "have a picnic", pl: "urządzić piknik" },
+      { id: 6923, unit: "Unit 6", section: "Listening", en: "have toast", pl: "zjeść tost" },
+      { id: 6924, unit: "Unit 6", section: "Listening", en: "sit outside", pl: "siedzieć na zewnątrz" },
+      { id: 6925, unit: "Unit 6", section: "Listening", en: "stick to a diet", pl: "przestrzegać diety" },
+      { id: 6926, unit: "Unit 6", section: "Use of English", en: "boil over", pl: "wykipieć" },
+      { id: 6927, unit: "Unit 6", section: "Use of English", en: "chop up", pl: "siekać, krajać, szatkować" },
+      { id: 6928, unit: "Unit 6", section: "Use of English", en: "cut down (on)", pl: "ograniczać (coś)" },
+      { id: 6929, unit: "Unit 6", section: "Use of English", en: "eat up", pl: "zjadać wszystko" },
+      { id: 6930, unit: "Unit 6", section: "Use of English", en: "warm up", pl: "podgrzewać" },
+      { id: 6931, unit: "Unit 6", section: "Other words", en: "bakery", pl: "piekarnia" },
+      { id: 6932, unit: "Unit 6", section: "Other words", en: "be on a strict diet", pl: "być na ścisłej diecie" },
+      { id: 6933, unit: "Unit 6", section: "Other words", en: "carbohydrates", pl: "węglowodany" },
+      { id: 6934, unit: "Unit 6", section: "Other words", en: "crepe", pl: "cienki naleśnik (francuski)" },
+      { id: 6935, unit: "Unit 6", section: "Other words", en: "low-carb diet", pl: "dieta niskowęglowodanowa" },
+      { id: 6936, unit: "Unit 6", section: "Other words", en: "mayonnaise", pl: "majonez" },
+      { id: 6937, unit: "Unit 6", section: "Other words", en: "mix-up", pl: "pomyłka" },
+      { id: 6938, unit: "Unit 6", section: "Other words", en: "protein", pl: "białko, proteina" }
     ];
 
     let deletedIds = JSON.parse(localStorage.getItem('deletedIds')) || [];
     let customWords = JSON.parse(localStorage.getItem('customWords')) || [];
     let learnedWords = JSON.parse(localStorage.getItem('learnedWords')) || [];
-    
+    let selectedWordIds = JSON.parse(localStorage.getItem('selectedWordIds')) || [];
+
+    let allVocabulary = [];
     let vocabulary = [];
-    refreshVocabulary();
+    let activeUnitDetail = null;
 
     let currentCardIndex = 0;
     let selectedPl = null;
     let selectedEn = null;
     let pendingAction = null;
 
-    updateProgress();
-    loadCard(currentCardIndex);
+    refreshAllData();
 
-    function refreshVocabulary() {
+    function refreshAllData() {
       const activeDefault = defaultVocabulary.filter(item => !deletedIds.includes(item.id));
-      vocabulary = [...activeDefault, ...customWords];
+      allVocabulary = [...activeDefault, ...customWords];
+      
+      buildUnitSelectorUI();
+      filterVocabulary();
+    }
+
+    function buildUnitSelectorUI() {
+      const tilesContainer = document.getElementById('unitsTilesGrid');
+      tilesContainer.innerHTML = '';
+
+      const units = [...new Set(allVocabulary.map(item => item.unit))].sort();
+
+      units.forEach(u => {
+        const unitWords = allVocabulary.filter(item => item.unit === u);
+        
+        const tile = document.createElement('div');
+        tile.className = 'unit-tile';
+        tile.onclick = () => openUnitDetail(u);
+        tile.innerHTML = `
+          <div class="unit-tile-title">📂 ${u === 'Własne' ? '⭐ Własne słówka' : u}</div>
+          <div class="unit-tile-count">${unitWords.length} słówek w bazie</div>
+        `;
+        tilesContainer.appendChild(tile);
+      });
+
+      if (activeUnitDetail) {
+        renderUnitDetailContent(activeUnitDetail);
+      }
+    }
+
+    function openUnitDetail(unitName) {
+      activeUnitDetail = unitName;
+      document.getElementById('unitsTilesView').style.display = 'none';
+      document.getElementById('unitDetailView').classList.add('active');
+      renderUnitDetailContent(unitName);
+    }
+
+    function backToTiles() {
+      activeUnitDetail = null;
+      document.getElementById('unitDetailView').classList.remove('active');
+      document.getElementById('unitsTilesView').style.display = 'block';
+    }
+
+    function renderUnitDetailContent(u) {
+      const container = document.getElementById('unitDetailContainer');
+      const unitWords = allVocabulary.filter(item => item.unit === u);
+      const sections = [...new Set(unitWords.map(item => item.section))].sort();
+
+      let unitHtml = `
+        <div class="unit-header">
+          <span class="unit-title">📂 ${u === 'Własne' ? '⭐ Własne słówka' : u}</span>
+          <div>
+            <button class="btn-small btn-outline" onclick="toggleUnit('${u}', true)">Zaznacz całe</button>
+            <button class="btn-small btn-outline" onclick="toggleUnit('${u}', false)" style="margin-left: 0.25rem;">Odznacz całe</button>
+          </div>
+        </div>
+        <div class="sections-list">
+      `;
+
+      sections.forEach(s => {
+        const sectionWords = unitWords.filter(item => item.section === s);
+        
+        unitHtml += `
+          <div class="section-card">
+            <div class="section-header">
+              <span class="section-title">📌 ${s} (${sectionWords.length})</span>
+              <div>
+                <button class="btn-small btn-outline" onclick="toggleSection('${u}', '${s}', true)">Zaznacz</button>
+                <button class="btn-small btn-outline" onclick="toggleSection('${u}', '${s}', false)" style="margin-left: 0.25rem;">Odznacz</button>
+              </div>
+            </div>
+            <div class="words-checkboxes">
+        `;
+
+        sectionWords.forEach(w => {
+          const isChecked = selectedWordIds.includes(w.id);
+          unitHtml += `
+            <div class="word-item-wrapper">
+              <label class="word-checkbox-label">
+                <input type="checkbox" value="${w.id}" ${isChecked ? 'checked' : ''} onchange="onWordCheckboxChange(${w.id}, this)">
+                <span><b>${w.en}</b> - ${w.pl}</span>
+              </label>
+          `;
+          
+          if (w.isCustom) {
+            unitHtml += `<button class="btn-delete-word" onclick="deleteCustomWord(${w.id}, event)" title="Usuń słówko">🗑️</button>`;
+          }
+
+          unitHtml += `</div>`;
+        });
+
+        unitHtml += `</div></div>`;
+      });
+
+      unitHtml += `</div>`;
+      container.innerHTML = unitHtml;
+    }
+
+    function onWordCheckboxChange(id, checkbox) {
+      if (checkbox.checked) {
+        if (!selectedWordIds.includes(id)) selectedWordIds.push(id);
+      } else {
+        selectedWordIds = selectedWordIds.filter(i => i !== id);
+      }
+      localStorage.setItem('selectedWordIds', JSON.stringify(selectedWordIds));
+      filterVocabulary();
+    }
+
+    function toggleUnit(unitName, selectState) {
+      const unitWordsIds = allVocabulary.filter(w => w.unit === unitName).map(w => w.id);
+      
+      if (selectState) {
+        unitWordsIds.forEach(id => {
+          if (!selectedWordIds.includes(id)) selectedWordIds.push(id);
+        });
+      } else {
+        selectedWordIds = selectedWordIds.filter(id => !unitWordsIds.includes(id));
+      }
+      
+      localStorage.setItem('selectedWordIds', JSON.stringify(selectedWordIds));
+      renderUnitDetailContent(unitName);
+      filterVocabulary();
+    }
+
+    function toggleSection(unitName, sectionName, selectState) {
+      const secWordsIds = allVocabulary.filter(w => w.unit === unitName && w.section === sectionName).map(w => w.id);
+
+      if (selectState) {
+        secWordsIds.forEach(id => {
+          if (!selectedWordIds.includes(id)) selectedWordIds.push(id);
+        });
+      } else {
+        selectedWordIds = selectedWordIds.filter(id => !secWordsIds.includes(id));
+      }
+
+      localStorage.setItem('selectedWordIds', JSON.stringify(selectedWordIds));
+      renderUnitDetailContent(unitName);
+      filterVocabulary();
+    }
+
+    function selectAllWords(selectState) {
+      if (selectState) {
+        selectedWordIds = allVocabulary.map(w => w.id);
+      } else {
+        selectedWordIds = [];
+      }
+      localStorage.setItem('selectedWordIds', JSON.stringify(selectedWordIds));
+      if (activeUnitDetail) renderUnitDetailContent(activeUnitDetail);
+      filterVocabulary();
+    }
+
+    function deleteCustomWord(id, event) {
+      event.stopPropagation();
+      showModal("Usuwanie słówka", "Czy na pewno chcesz bezpowrotnie usunąć to własne słówko?", () => {
+        customWords = customWords.filter(w => w.id !== id);
+        localStorage.setItem('customWords', JSON.stringify(customWords));
+        
+        selectedWordIds = selectedWordIds.filter(i => i !== id);
+        localStorage.setItem('selectedWordIds', JSON.stringify(selectedWordIds));
+
+        refreshAllData();
+        if (activeUnitDetail && !allVocabulary.some(w => w.unit === activeUnitDetail)) {
+          backToTiles();
+        }
+      });
+    }
+
+    function filterVocabulary() {
+      vocabulary = allVocabulary.filter(item => selectedWordIds.includes(item.id));
+      if (selectedWordIds.length === 0) {
+        document.getElementById('filterBadge').innerText = `Brak zaznaczonych słówek`;
+      } else {
+        document.getElementById('filterBadge').innerText = `Wybrane słówka: ${vocabulary.length} / ${allVocabulary.length}`;
+      }
       updateProgress();
+      refreshActiveTab();
+    }
+
+    function refreshActiveTab() {
+      const activeBtn = document.querySelector('.nav-btn.active');
+      if (!activeBtn) return;
+      const activeTab = activeBtn.getAttribute('onclick');
+      
+      if (activeTab.includes('flashcards')) loadCard(currentCardIndex);
+      if (activeTab.includes('quiz')) initQuiz();
+      if (activeTab.includes('matching')) initMatching();
+      if (activeTab.includes('dictionary')) renderDictionary();
     }
 
     function switchTab(tabId, evt) {
@@ -768,7 +1670,7 @@
       if (tabId === 'dictionary') renderDictionary();
     }
 
-    // MODAL LOGIC
+    // MODAL
     function showModal(title, text, onConfirm) {
       document.getElementById('modalTitle').innerText = title;
       document.getElementById('modalText').innerText = text;
@@ -848,16 +1750,17 @@
     function confirmResetProgress() {
       showModal(
         "Resetowanie progresu",
-        "Czy na pewno chcesz zresetować cały swój postęp nauki?",
+        "Czy na pewno chcesz zresetować postęp nauki dla wybranych słówek?",
         () => {
-          learnedWords = [];
-          localStorage.removeItem('learnedWords');
+          const currentIds = vocabulary.map(w => w.id);
+          learnedWords = learnedWords.filter(id => !currentIds.includes(id));
+          localStorage.setItem('learnedWords', JSON.stringify(learnedWords));
           updateProgress();
         }
       );
     }
 
-    // DODAWANIE I USUWANIE
+    // DODAWANIE WŁASNEGO SŁÓWKA
     function addNewWord(e) {
       e.preventDefault();
       const en = document.getElementById('inputEn').value.trim();
@@ -869,12 +1772,18 @@
         id: Date.now(),
         en: en,
         pl: pl,
+        unit: "Własne",
+        section: "Własne słówka",
         isCustom: true
       };
 
       customWords.push(newWord);
       localStorage.setItem('customWords', JSON.stringify(customWords));
-      refreshVocabulary();
+      
+      selectedWordIds.push(newWord.id);
+      localStorage.setItem('selectedWordIds', JSON.stringify(selectedWordIds));
+
+      refreshAllData();
 
       document.getElementById('inputEn').value = '';
       document.getElementById('inputPl').value = '';
@@ -882,50 +1791,6 @@
       const alertMsg = document.getElementById('alertMsg');
       alertMsg.style.display = 'block';
       setTimeout(() => { alertMsg.style.display = 'none'; }, 2500);
-    }
-
-    function confirmDeleteWord(id, wordEn) {
-      showModal(
-        "Usuwanie słówka",
-        `Czy na pewno chcesz usunąć słówko "${wordEn}" ze swojej bazy?`,
-        () => {
-          const isCustomWord = customWords.some(w => w.id === id);
-          if (isCustomWord) {
-            customWords = customWords.filter(w => w.id !== id);
-            localStorage.setItem('customWords', JSON.stringify(customWords));
-          } else {
-            deletedIds.push(id);
-            localStorage.setItem('deletedIds', JSON.stringify(deletedIds));
-          }
-
-          learnedWords = learnedWords.filter(lId => lId !== id);
-          localStorage.setItem('learnedWords', JSON.stringify(learnedWords));
-
-          refreshVocabulary();
-          renderDictionary();
-          loadCard(currentCardIndex);
-        }
-      );
-    }
-
-    function confirmDeleteAllWords() {
-      showModal(
-        "Usuwanie wszystkich słówek",
-        "Czy na pewno chcesz usunąć WSZYSTKIE słówka z bazy?",
-        () => {
-          customWords = [];
-          deletedIds = defaultVocabulary.map(w => w.id);
-          learnedWords = [];
-          
-          localStorage.setItem('customWords', JSON.stringify(customWords));
-          localStorage.setItem('deletedIds', JSON.stringify(deletedIds));
-          localStorage.removeItem('learnedWords');
-
-          refreshVocabulary();
-          renderDictionary();
-          loadCard(0);
-        }
-      );
     }
 
     // QUIZ
@@ -1059,15 +1924,12 @@
     function renderDictionary() {
       const query = document.getElementById('dictSearch').value.toLowerCase();
       const list = document.getElementById('dictList');
-      const btnDeleteAll = document.getElementById('btnDeleteAll');
-      
-      btnDeleteAll.style.display = vocabulary.length > 0 ? 'inline-block' : 'none';
       list.innerHTML = '';
 
       const filtered = vocabulary.filter(item => item.en.toLowerCase().includes(query) || item.pl.toLowerCase().includes(query));
 
       if (filtered.length === 0) {
-        list.innerHTML = '<div class="empty-state">Brak słówek w bazie.</div>';
+        list.innerHTML = '<div class="empty-state">Brak słówek w bieżącym wyborze.</div>';
         return;
       }
 
@@ -1078,8 +1940,9 @@
           <div class="dict-info">
             <span class="dict-en">${item.en}</span>
             <span class="dict-pl">${item.pl}</span>
+            <span class="dict-tag">🏷️ ${item.unit} | ${item.section}</span>
           </div>
-          <button class="btn-delete" onclick="confirmDeleteWord(${item.id}, '${item.en.replace(/'/g, "\\'")}')">🗑️ Usuń</button>
+          ${item.isCustom ? `<button class="btn-delete-word" style="padding: 0.5rem 0.8rem;" onclick="deleteCustomWord(${item.id}, event)">🗑️ Usuń</button>` : ''}
         `;
         list.appendChild(div);
       });
